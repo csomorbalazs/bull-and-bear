@@ -1,6 +1,7 @@
 import { Component, ComponentFactoryResolver, ComponentRef, OnInit, Type, ViewChild } from '@angular/core';
 import { MiniGameDirective } from 'src/app/directives/mini-game.directive';
 import { GameState } from 'src/app/models/GameState';
+import { PlayerInfoService } from 'src/app/services/player-info.service';
 import { CasinoMiniGameComponent } from '../mini-games/casino-mini-game/casino-mini-game.component';
 import { MiniGame } from '../mini-games/mini-game';
 import { MoneyCountingMiniGameComponent } from '../mini-games/money-counting-mini-game/money-counting-mini-game.component';
@@ -23,14 +24,22 @@ export class GameComponent implements OnInit {
     CasinoMiniGameComponent
   ];
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private playerInfoService: PlayerInfoService) { }
 
   ngOnInit(): void {
+    this.playerInfoService.reset();
     this.loadComponent();
   }
 
   onMiniGameFinished() {
-    this.gameState = GameState.INVESTMENT;
+    if (this.playerInfoService.playerIsDead()) {
+      this.gameState = GameState.ENDOFGAME;
+    } else {
+      this.gameState = GameState.INVESTMENT;
+    }
+
   }
 
   onInvestmentFinished() {

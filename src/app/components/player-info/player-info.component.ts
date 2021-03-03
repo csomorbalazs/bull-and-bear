@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PlayerInfo } from 'src/app/models/PlayerInfo';
+import { PlayerInfoService } from 'src/app/services/player-info.service';
 
 @Component({
   selector: 'player-info',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player-info.component.scss']
 })
 export class PlayerInfoComponent implements OnInit {
+  currentPlayerInfo: PlayerInfo;
 
-  constructor() { }
+  constructor(private playerInfoService: PlayerInfoService) { }
 
   ngOnInit(): void {
+    this.playerInfoService.playerInfoMessage.subscribe(playerInfo => {
+      this.currentPlayerInfo = playerInfo;
+    })
   }
 
 }
