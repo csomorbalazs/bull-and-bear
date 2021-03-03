@@ -1,1 +1,3 @@
-<p>app works!</p>
+<start-screen *ngIf="!started"></start-screen>
+<game *ngIf="started"></game>
+<button *ngIf="!started" (click)="started = true">Start</button>
