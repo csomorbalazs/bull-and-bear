@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'lesson-screen',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lesson-screen.component.scss']
 })
 export class LessonScreenComponent implements OnInit {
-
+  @Output() onLessonViewed = new EventEmitter<void>();
   constructor() { }
 
   ngOnInit(): void {

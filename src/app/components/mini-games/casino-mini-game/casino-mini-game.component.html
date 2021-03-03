@@ -1,2 +1,8 @@
-<p>casino-mini-game works!</p>
-<button (click)="onFinished.emit()">Finish MiniGame</button>
+CasinoMiniGame
+<div *ngIf="miniGameState === MiniGameState.GAMEPLAY">
+  <button (click)="onMiniGameWon()">Win</button>
+  <button (click)="onMiniGameLost()">Lose</button>
+</div>
+<mini-game-result *ngIf="miniGameState === MiniGameState.WON || miniGameState === MiniGameState.LOST"
+  [result]="miniGameState" (onResultsViewed)="miniGameState = MiniGameState.LESSON"></mini-game-result>
+<lesson-screen *ngIf="miniGameState == MiniGameState.LESSON" (onLessonViewed)="onFinished.emit()"></lesson-screen>

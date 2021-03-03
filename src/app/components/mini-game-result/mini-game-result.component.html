@@ -1,1 +1,11 @@
-<p>mini-game-result works!</p>
+<div *ngIf="result === MiniGameState.WON">
+  You won!
+  *score increased animation*
+</div>
+
+<div *ngIf="result === MiniGameState.LOST">
+  You lost!
+  *heart lost animation*
+</div>
+
+<button (click)="onResultsViewed.emit()">Go to lesson</button>

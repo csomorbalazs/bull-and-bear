@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { MiniGameState } from 'src/app/models/MiniGameState';
 import { MiniGame } from '../mini-game';
 
 @Component({
@@ -7,7 +8,18 @@ import { MiniGame } from '../mini-game';
   styleUrls: ['./casino-mini-game.component.scss']
 })
 export class CasinoMiniGameComponent implements OnInit, MiniGame {
-  @Input() onFinished = new EventEmitter<void>();
+  MiniGameState = MiniGameState;
+  miniGameState: MiniGameState = MiniGameState.GAMEPLAY;
+
+  @Output() onFinished = new EventEmitter<void>();
+
+  onMiniGameWon() {
+    this.miniGameState = MiniGameState.WON;
+  }
+
+  onMiniGameLost() {
+    this.miniGameState = MiniGameState.LOST;
+  }
 
   constructor() {
   }

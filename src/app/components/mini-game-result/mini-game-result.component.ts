@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { MiniGameState } from 'src/app/models/MiniGameState';
 
 @Component({
   selector: 'mini-game-result',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mini-game-result.component.scss']
 })
 export class MiniGameResultComponent implements OnInit {
+  MiniGameState = MiniGameState;
+  @Input() result: MiniGameState;
+  @Output() onResultsViewed = new EventEmitter<void>();
 
   constructor() { }
 
