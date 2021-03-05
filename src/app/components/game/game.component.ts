@@ -1,4 +1,10 @@
-import { Component, ComponentFactoryResolver, ComponentRef, OnInit, Type, ViewChild } from '@angular/core';
+import {
+  Component,
+  ComponentFactoryResolver,
+  OnInit,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { MiniGameDirective } from 'src/app/directives/mini-game.directive';
 import { GameState } from 'src/app/models/GameState';
 import { PlayerInfoService } from 'src/app/services/player-info.service';
@@ -9,11 +15,12 @@ import { MoneyCountingMiniGameComponent } from '../mini-games/money-counting-min
 @Component({
   selector: 'game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss']
+  styleUrls: ['./game.component.scss'],
 })
 export class GameComponent implements OnInit {
   GameState = GameState;
   gameState: GameState = GameState.MINIGAME;
+  secondChancePriceMultiplier: number = 1;
 
   @ViewChild(MiniGameDirective, { static: true }) miniGame: MiniGameDirective;
 
@@ -21,12 +28,13 @@ export class GameComponent implements OnInit {
 
   miniGames: Type<any>[] = [
     MoneyCountingMiniGameComponent,
-    CasinoMiniGameComponent
+    CasinoMiniGameComponent,
   ];
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
-    private playerInfoService: PlayerInfoService) { }
+    private playerInfoService: PlayerInfoService
+  ) {}
 
   ngOnInit(): void {
     this.playerInfoService.reset();
@@ -34,29 +42,38 @@ export class GameComponent implements OnInit {
   }
 
   onMiniGameFinished() {
-    if (this.playerInfoService.playerIsDead()) {
-      this.gameState = GameState.ENDOFGAME;
-    } else {
-      this.gameState = GameState.INVESTMENT;
-    }
-
+    this.playerInfoService.playerIsDead()
+      ? (this.gameState = GameState.ENDOFGAME)
+      : (this.gameState = GameState.INVESTMENT);
   }
 
   onInvestmentFinished() {
-    this.currentMiniGameIndex = (this.currentMiniGameIndex + 1) % this.miniGames.length;
+    this.loadRandomMiniGame();
+  }
 
+  onSecondChance() {
+    this.secondChancePriceMultiplier *= 2;
+    this.loadRandomMiniGame();
+  }
+
+  loadRandomMiniGame() {
+    this.currentMiniGameIndex =
+      (this.currentMiniGameIndex + 1) % this.miniGames.length;
     this.loadComponent();
     this.gameState = GameState.MINIGAME;
   }
 
   loadComponent() {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.miniGames[this.currentMiniGameIndex]);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+      this.miniGames[this.currentMiniGameIndex]
+    );
 
     const viewContainerRef = this.miniGame.viewContainerRef;
     viewContainerRef.clear();
 
-    const componentRef = viewContainerRef.createComponent<MiniGame>(componentFactory);
-    componentRef.instance.onFinished.subscribe(() => this.onMiniGameFinished());
-    
+    const componentRef = viewContainerRef.createComponent<MiniGame>(
+      componentFactory
+    );
+    componentRef.instance.finished.subscribe(() => this.onMiniGameFinished());
   }
 }

@@ -1,9 +1,14 @@
 <p>game</p>
 <player-info></player-info>
-<ng-template *miniGame="gameState" (onFinished)="onMiniGameFinished($event)">
-  <div>
-  </div>
+<ng-template *miniGame="gameState" (finished)="onMiniGameFinished($event)">
 </ng-template>
-<investment-screen *ngIf="gameState == GameState.INVESTMENT" (onFinished)="onInvestmentFinished()"></investment-screen>
-<end-of-game-screen *ngIf="gameState == GameState.ENDOFGAME"></end-of-game-screen>
+<investment-screen
+  *ngIf="gameState == GameState.INVESTMENT"
+  (finished)="onInvestmentFinished()"
+></investment-screen>
+<end-of-game-screen
+  *ngIf="gameState == GameState.ENDOFGAME"
+  [secondChancePriceMultiplier]="secondChancePriceMultiplier"
+  (secondChance)="onSecondChance()"
+></end-of-game-screen>
 <p>game</p>
