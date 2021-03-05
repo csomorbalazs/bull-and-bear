@@ -57,5 +57,6 @@ export class GameComponent implements OnInit {
 
     const componentRef = viewContainerRef.createComponent<MiniGame>(componentFactory);
     componentRef.instance.onFinished.subscribe(() => this.onMiniGameFinished());
+    
   }
 }

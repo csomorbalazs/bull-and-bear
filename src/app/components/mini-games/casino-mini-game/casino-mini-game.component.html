@@ -1,3 +1,4 @@
+<timer [initialTimeInSeconds]="10" (timeIsUp)="onTimeIsUp()"></timer>
 CasinoMiniGame
 <div *ngIf="miniGameState === MiniGameState.GAMEPLAY">
   <button (click)="onMiniGameWon()">Win</button>

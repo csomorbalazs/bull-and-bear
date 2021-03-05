@@ -1,15 +1,74 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'timer',
   templateUrl: './timer.component.html',
-  styleUrls: ['./timer.component.scss']
+  styleUrls: ['./timer.component.scss'],
 })
 export class TimerComponent implements OnInit {
+  @Input() initialTimeInSeconds: string;
+  @Output() timeIsUp = new EventEmitter<boolean>();
 
-  constructor() { }
+  //TODO: adjust colors
+  private colorStops: {} = {
+    0: '#E1341E',
+    20: '#F99E06',
+    40: '#E8EE11',
+    60: '#C6D926',
+    80: '##5DAC53',
+    90: '#18F40B',
+  };
+
+  private currentColor: string;
+  private progressPercentage: number;
+  private timeLeftInMs: number;
+  private initialTimeInMs: number;
+
+  constructor() {}
 
   ngOnInit(): void {
+    this.currentColor = '#1ECF5D';
+    this.timeLeftInMs = this.initialTimeInMs =
+      Number(this.initialTimeInSeconds) * 1000;
+    this.progressPercentage = 100;
+    setInterval(() => {
+      if (this.timeLeftInMs > 0) {
+        this.updateTimer();
+      } else {
+        this.timeIsUp.emit();
+      }
+    }, 10);
   }
 
+  updateTimer() {
+    this.timeLeftInMs -= 10;
+    this.progressPercentage = this.calculateProgressPercentage();
+    this.currentColor = this.calculateColor();
+  }
+
+  calculateProgressPercentage(): number {
+    return (this.timeLeftInMs / Number(this.initialTimeInMs)) * 100;
+  }
+
+  calculateColor() {
+    let colorStopKeys: Array<number> = Object.keys(this.colorStops).map((k) =>
+      Number(k)
+    );
+    let colorStopPercentage = colorStopKeys[0];
+    for (let percentage of colorStopKeys) {
+      if (percentage < this.progressPercentage) {
+        colorStopPercentage = percentage;
+      } else if (percentage >= this.progressPercentage) {
+        return this.colorStops[colorStopPercentage];
+      }
+    }
+    return this.colorStops[colorStopPercentage];
+  }
+
+  styleTimer() {
+    return {
+      'background-color': this.currentColor,
+      width: this.progressPercentage + '%',
+    };
+  }
 }

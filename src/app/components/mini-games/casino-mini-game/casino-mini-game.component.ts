@@ -6,7 +6,7 @@ import { MiniGame } from '../mini-game';
 @Component({
   selector: 'casino-mini-game',
   templateUrl: './casino-mini-game.component.html',
-  styleUrls: ['./casino-mini-game.component.scss']
+  styleUrls: ['./casino-mini-game.component.scss'],
 })
 export class CasinoMiniGameComponent implements OnInit, MiniGame {
   MiniGameState = MiniGameState;
@@ -14,9 +14,9 @@ export class CasinoMiniGameComponent implements OnInit, MiniGame {
 
   @Output() onFinished = new EventEmitter<void>();
 
-  constructor(private playerInfoService: PlayerInfoService) { }
+  constructor(private playerInfoService: PlayerInfoService) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onMiniGameWon() {
     this.playerInfoService.increaseScoreBy(50);
@@ -28,5 +28,9 @@ export class CasinoMiniGameComponent implements OnInit, MiniGame {
     this.miniGameState = MiniGameState.LOST;
   }
 
-
+  onTimeIsUp() {
+    this.playerInfoService.decreaseCurrentHealth();
+    this.miniGameState = MiniGameState.LOST;
+    this.onFinished.emit();
+  }
 }

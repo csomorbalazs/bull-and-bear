@@ -6,7 +6,7 @@ import { MiniGame } from '../mini-game';
 @Component({
   selector: 'money-counting-mini-game',
   templateUrl: './money-counting-mini-game.component.html',
-  styleUrls: ['./money-counting-mini-game.component.scss']
+  styleUrls: ['./money-counting-mini-game.component.scss'],
 })
 export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
   MiniGameState = MiniGameState;
@@ -14,9 +14,9 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
 
   @Output() onFinished = new EventEmitter<void>();
 
-  constructor(private playerInfoService: PlayerInfoService) { }
+  constructor(private playerInfoService: PlayerInfoService) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onMiniGameWon() {
     this.playerInfoService.increaseScoreBy(50);
@@ -28,4 +28,9 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
     this.miniGameState = MiniGameState.LOST;
   }
 
+  onTimeIsUp() {
+    this.playerInfoService.decreaseCurrentHealth();
+    this.miniGameState = MiniGameState.LOST;
+    this.onFinished.emit();
+  }
 }
