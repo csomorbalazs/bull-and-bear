@@ -12,6 +12,6 @@ export class MiniGameResultComponent implements OnInit {
   @Output() resultsViewed = new EventEmitter<void>();
 
   constructor() {}
-  
+
   ngOnInit(): void {}
 }

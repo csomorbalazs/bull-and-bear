@@ -15,8 +15,9 @@ export class TimerComponent implements OnInit {
     20: '#F99E06',
     40: '#E8EE11',
     60: '#C6D926',
-    80: '##5DAC53',
+    80: '#5DAC53',
     90: '#18F40B',
+    100: '#1ECF5D',
   };
 
   private currentColor: string;
@@ -27,7 +28,7 @@ export class TimerComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.currentColor = '#1ECF5D';
+    this.currentColor = this.colorStops[100];
     this.timeLeftInMs = this.initialTimeInMs =
       Number(this.initialTimeInSeconds) * 1000;
     this.progressPercentage = 100;

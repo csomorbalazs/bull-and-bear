@@ -21,6 +21,8 @@ export class GameComponent implements OnInit {
   GameState = GameState;
   gameState: GameState = GameState.MINIGAME;
   secondChancePriceMultiplier: number = 1;
+  timeLimitMultiplier: number = 0.9;
+  timeLimitInSeconds: number = 10;
 
   @ViewChild(MiniGameDirective, { static: true }) miniGame: MiniGameDirective;
 
@@ -42,6 +44,7 @@ export class GameComponent implements OnInit {
   }
 
   onMiniGameFinished() {
+    this.timeLimitInSeconds *= this.timeLimitMultiplier;
     this.playerInfoService.playerIsDead()
       ? (this.gameState = GameState.ENDOFGAME)
       : (this.gameState = GameState.INVESTMENT);
@@ -75,5 +78,6 @@ export class GameComponent implements OnInit {
       componentFactory
     );
     componentRef.instance.finished.subscribe(() => this.onMiniGameFinished());
+    componentRef.instance.timeLimitInSeconds = this.timeLimitInSeconds;
   }
 }

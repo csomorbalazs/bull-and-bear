@@ -1,6 +1,6 @@
 <p>game</p>
 <player-info></player-info>
-<ng-template *miniGame="gameState" (finished)="onMiniGameFinished($event)">
+<ng-template *miniGame="gameState" (finished)="onMiniGameFinished()">
 </ng-template>
 <investment-screen
   *ngIf="gameState == GameState.INVESTMENT"

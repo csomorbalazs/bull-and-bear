@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MiniGameState } from 'src/app/models/MiniGameState';
 import { PlayerInfoService } from 'src/app/services/player-info.service';
 import { MiniGame } from '../mini-game';
@@ -12,6 +12,7 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
   MiniGameState = MiniGameState;
   miniGameState: MiniGameState = MiniGameState.GAMEPLAY;
 
+  @Input() timeLimitInSeconds;
   @Output() finished = new EventEmitter<void>();
 
   constructor(private playerInfoService: PlayerInfoService) {}
