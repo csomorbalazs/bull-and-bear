@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'start-screen',
@@ -8,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class StartScreenComponent implements OnInit {
 
   constructor() { }
+
+  @Output() gameStarted: EventEmitter<void> = new EventEmitter<void>();
+
+
 
   ngOnInit(): void {
   }

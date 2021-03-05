@@ -1,3 +1,2 @@
-<start-screen *ngIf="!started"></start-screen>
+<start-screen *ngIf="!started" (gameStarted)="onGameStarted()"></start-screen> 
 <game *ngIf="started"></game>
-<button *ngIf="!started" (click)="started = true">Start</button>

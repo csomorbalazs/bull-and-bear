@@ -10,6 +10,10 @@ export class AppComponent implements OnInit {
 
   constructor() { }
 
+  onGameStarted() {
+    this.started = true;
+  }
+
   ngOnInit(): void {
   }
 
