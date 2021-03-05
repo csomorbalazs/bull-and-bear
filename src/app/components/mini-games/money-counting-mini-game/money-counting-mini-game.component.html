@@ -1,6 +1,6 @@
-<timer [initialTimeInSeconds]="10" (timeIsUp)="onTimeIsUp()"></timer>
 MoneyCountingMiniGame
 <div *ngIf="miniGameState === MiniGameState.GAMEPLAY">
+  <timer [initialTimeInSeconds]="10" (timeIsUp)="onTimeIsUp()"></timer>
   <button (click)="onMiniGameWon()">Win</button>
   <button (click)="onMiniGameLost()">Lose</button>
 </div>
@@ -9,9 +9,9 @@ MoneyCountingMiniGame
     miniGameState === MiniGameState.WON || miniGameState === MiniGameState.LOST
   "
   [result]="miniGameState"
-  (onResultsViewed)="miniGameState = MiniGameState.LESSON"
+  (resultsViewed)="miniGameState = MiniGameState.LESSON"
 ></mini-game-result>
 <lesson-screen
   *ngIf="miniGameState == MiniGameState.LESSON"
-  (onLessonViewed)="onFinished.emit()"
+  (lessonViewed)="finished.emit()"
 ></lesson-screen>

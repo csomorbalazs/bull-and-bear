@@ -3,13 +3,13 @@ import { BehaviorSubject } from 'rxjs';
 import { PlayerInfo } from '../models/PlayerInfo';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PlayerInfoService {
   private playerInfo: PlayerInfo = new PlayerInfo(3, 0);
   playerInfoMessage = new BehaviorSubject(this.playerInfo);
 
-  constructor() { }
+  constructor() {}
 
   getCurrentScore() {
     return this.playerInfo.currentScore;
@@ -59,7 +59,7 @@ export class PlayerInfoService {
   }
 
   getHighscore(): number {
-    const strHighscore = (localStorage.getItem('highscore'));
+    const strHighscore = localStorage.getItem('highscore');
     if (strHighscore === null) {
       return 0;
     } else {

@@ -12,7 +12,7 @@ export class CasinoMiniGameComponent implements OnInit, MiniGame {
   MiniGameState = MiniGameState;
   miniGameState: MiniGameState = MiniGameState.GAMEPLAY;
 
-  @Output() onFinished = new EventEmitter<void>();
+  @Output() finished = new EventEmitter<void>();
 
   constructor(private playerInfoService: PlayerInfoService) {}
 
@@ -31,6 +31,6 @@ export class CasinoMiniGameComponent implements OnInit, MiniGame {
   onTimeIsUp() {
     this.playerInfoService.decreaseCurrentHealth();
     this.miniGameState = MiniGameState.LOST;
-    this.onFinished.emit();
+    this.finished.emit();
   }
 }

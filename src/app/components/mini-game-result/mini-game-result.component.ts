@@ -4,16 +4,14 @@ import { MiniGameState } from 'src/app/models/MiniGameState';
 @Component({
   selector: 'mini-game-result',
   templateUrl: './mini-game-result.component.html',
-  styleUrls: ['./mini-game-result.component.scss']
+  styleUrls: ['./mini-game-result.component.scss'],
 })
 export class MiniGameResultComponent implements OnInit {
   MiniGameState = MiniGameState;
   @Input() result: MiniGameState;
-  @Output() onResultsViewed = new EventEmitter<void>();
+  @Output() resultsViewed = new EventEmitter<void>();
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor() {}
+  
+  ngOnInit(): void {}
 }
