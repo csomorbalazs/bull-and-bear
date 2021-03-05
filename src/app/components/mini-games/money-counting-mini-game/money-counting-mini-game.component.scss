@@ -1,0 +1,22 @@
+$fifty-coin: '/assets/money-counting/50_coin.svg';
+
+.mini-game-container {
+  background: linear-gradient(197.54deg, #27255b 0%, #49477d 100%);
+  h1{
+      text-align: center;
+      color: white;
+  }
+  .grid {
+    display: flex;
+    .column {
+      display: flex;
+      width: 50%;
+      flex-flow: column nowrap;
+      justify-content: space-around;
+      button {
+        border: 0;
+        background: transparent;
+      }
+    }
+  }
+}
