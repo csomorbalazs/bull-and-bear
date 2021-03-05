@@ -1,2 +1,19 @@
-<p>investment-screen works!</p>
-<button (click)="finished.emit()">New minigame</button>
+<p *ngFor="let finishedInvestment of finishedInvestments">
+  Finished: {{ finishedInvestment.amount }}
+</p>
+<p *ngFor="let runningInvestment of runningInvestments">
+  Running: {{ runningInvestment.amount }}
+</p>
+
+<button
+  [disabled]="!investmentService.hasMoneyForOption(investmentOption)"
+  (click)="addInvestment(investmentOption)"
+  *ngFor="let investmentOption of investmentOptions"
+>
+  Create new with <br />
+  value: <strong> {{ investmentOption.amount }}</strong
+  >, duration: <strong>{{ investmentOption.duration }}</strong> return:
+  <strong>{{ investmentOption.returnAmount }}</strong>
+</button>
+
+<button (click)="nextClicked()">Next</button>
