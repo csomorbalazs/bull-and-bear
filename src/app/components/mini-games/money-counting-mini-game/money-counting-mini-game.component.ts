@@ -17,6 +17,7 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
   targetMoney: number;
 
   @Input() timeLimitInSeconds;
+  @Input() reward;
   @Output() finished = new EventEmitter<void>();
 
   constructor(private playerInfoService: PlayerInfoService) { }

@@ -5,4 +5,5 @@ export interface MiniGame {
   onMiniGameLost(): void;
   finished: EventEmitter<void>;
   timeLimitInSeconds: number;
+  reward: number;
 }

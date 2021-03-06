@@ -25,6 +25,7 @@ export class GameComponent implements OnInit {
   secondChancePriceMultiplier: number = 1;
   timeLimitMultiplier: number = 0.9;
   timeLimitInSeconds: number = 10;
+  reward: number = 50;
 
   @ViewChild(MiniGameDirective, { static: true }) miniGame: MiniGameDirective;
 
@@ -40,7 +41,7 @@ export class GameComponent implements OnInit {
     private componentFactoryResolver: ComponentFactoryResolver,
     private playerInfoService: PlayerInfoService,
     private investmentsService: InvestmentsService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.playerInfoService.reset();
@@ -90,5 +91,6 @@ export class GameComponent implements OnInit {
     );
     componentRef.instance.finished.subscribe(() => this.onMiniGameFinished());
     componentRef.instance.timeLimitInSeconds = this.timeLimitInSeconds;
+    componentRef.instance.reward = this.reward;
   }
 }

@@ -13,11 +13,12 @@ export class CasinoMiniGameComponent implements OnInit, MiniGame {
   miniGameState: MiniGameState = MiniGameState.GAMEPLAY;
 
   @Input() timeLimitInSeconds: number;
+  @Input() reward: number;
   @Output() finished = new EventEmitter<void>();
 
-  constructor(private playerInfoService: PlayerInfoService) {}
+  constructor(private playerInfoService: PlayerInfoService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onMiniGameLost() {
     this.playerInfoService.decreaseCurrentHealth();
