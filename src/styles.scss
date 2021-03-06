@@ -2,10 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400&family=Chewy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap');
 
-* {
-    box-sizing: border-box;
-}
-
 h1 {
     text-align: center;
     color: white;
@@ -20,7 +16,6 @@ html {
 }
 
 .score-box {
-
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
