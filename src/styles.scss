@@ -22,12 +22,11 @@ html {
   padding-top: 50px;
 }
 
-.red-button {
+.default-button {
   margin-top: 30px;
-  width: 40%;
-  max-width: 139px;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 44px;
-  background: linear-gradient(0deg, #e54045 -5.9%, #f45f58 84.03%);
   border: none;
   border-radius: 13px;
   font-family: Chewy;
@@ -36,7 +35,20 @@ html {
   text-align: center;
   color: #ffffff;
   cursor: pointer;
+
+}
+
+.red-button {
+  @extend .default-button;
+  background: linear-gradient(0deg, #e54045 -5.9%, #f45f58 84.03%);
   box-shadow: 0px 3px 0px #d01618;
+}
+
+.gray-button {
+  @extend .default-button;
+  background: linear-gradient(0deg, #BDBDBD -5.9%, #E0E0E0 84.03%);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 
 .score-box {
@@ -61,4 +73,12 @@ html {
   font-size: 24px;
   color: #ffffff;
   text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.25);
+}
+
+.next-button {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  margin: 0 auto;
+  text-align: center;
 }

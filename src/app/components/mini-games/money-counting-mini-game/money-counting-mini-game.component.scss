@@ -1,24 +1,26 @@
 .container {
-  height: calc(100% - 100px);
-  padding-top: 100px;
   background: linear-gradient(197.54deg, #27255b 0%, #49477d 100%);
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+
   .grid {
     display: flex;
     height: 100%;
     flex-flow: row wrap;
     align-items: center;
     justify-content: center;
+
     .child {
       flex: 1 0 50%;
     }
+
     button {
       border: 0;
       max-width: 200px;
       background: transparent;
     }
+
     button:focus {
       outline: 0;
     }

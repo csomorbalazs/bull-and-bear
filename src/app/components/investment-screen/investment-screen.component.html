@@ -1,19 +1,33 @@
-<p *ngFor="let finishedInvestment of finishedInvestments">
+<!-- <p *ngFor="let finishedInvestment of finishedInvestments">
   Finished: {{ finishedInvestment.amount }}
 </p>
 <p *ngFor="let runningInvestment of runningInvestments">
   Running: {{ runningInvestment.amount }}
 </p>
-
-<button
-  [disabled]="!investmentService.hasMoneyForOption(investmentOption)"
-  (click)="addInvestment(investmentOption)"
-  *ngFor="let investmentOption of investmentOptions"
->
-  Create new with <br />
-  value: <strong> {{ investmentOption.amount }}</strong
-  >, duration: <strong>{{ investmentOption.duration }}</strong> return:
-  <strong>{{ investmentOption.returnAmount }}</strong>
-</button>
-
-<button (click)="nextClicked()">Next</button>
+ -->
+<div class="container minigame-container">
+  <h1>Új befektetés </h1>
+  <div class="set-invest-amount">
+    <button class="minus" (click)="handleMinus()">-</button>
+    <input type="number" class="num" [(ngModel)]="investmentAmount" />
+    <button class="plus" (click)="handlePlus()">+</button>
+  </div>
+  <div class="investment-option-buttons">
+    <div class="investment-option" (click)="addInvestment(investmentOption)"
+      *ngFor="let investmentOption of investmentOptions">
+      <div class="investment-duration">
+        <div class="image-text-container">
+          <img src="/assets/images/circle-arrow.svg">
+          <div class="centered">
+            {{ investmentOption.duration }}
+          </div>
+        </div>
+      </div>
+      <div class="investment-return-amount">
+        + {{ investmentAmount * investmentOption.interest }}
+        <img src="/assets/images/score-coins.svg">
+      </div>
+    </div>
+  </div>
+  <button class="next-button gray-button" (click)="nextClicked()">KIHAGYOM</button>
+</div>

@@ -40,7 +40,7 @@ export class GameComponent implements OnInit {
     private componentFactoryResolver: ComponentFactoryResolver,
     private playerInfoService: PlayerInfoService,
     private investmentsService: InvestmentsService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.playerInfoService.reset();

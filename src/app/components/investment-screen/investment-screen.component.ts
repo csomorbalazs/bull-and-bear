@@ -1,7 +1,8 @@
 import { PlayerInfoService } from 'src/app/services/player-info.service';
 import { Investment } from './../../models/Investment';
 import { InvestmentsService } from 'src/app/services/investments.service';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { InvestmentOption } from 'src/app/models/InvestementOption';
 
 @Component({
   selector: 'investment-screen',
@@ -11,39 +12,53 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class InvestmentScreenComponent implements OnInit {
   @Output() finished = new EventEmitter<void>();
 
-  investmentOptions: Investment[];
+  investmentOptions: InvestmentOption[];
   finishedInvestments: Investment[];
-  runningInvestments: Investment[];
+  runningInvestment: Investment;
+
+  investmentAmount = 30;
 
   constructor(
     private investmentService: InvestmentsService,
     private playerInfoService: PlayerInfoService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.investmentService.addFinishedInvestmentsToPlayerScore();
 
     this.investmentOptions = this.investmentService.getInvestmentOptions();
     this.finishedInvestments = this.investmentService.getFinishedInvestments();
-    this.runningInvestments = this.investmentService.getRunningInvestments();
-    if (
-      this.investmentOptions.every(
-        (option) => !this.investmentService.hasMoneyForOption(option)
-      )
-    ) {
-      this.finished.emit();
-    }
+    this.runningInvestment = this.investmentService.getRunningInvestment();
+    /*     if (
+          this.investmentOptions.every(
+            (option) => !this.investmentService.hasMoneyForOption(option)
+          )
+        ) {
+          this.finished.emit();
+        } */
 
-    console.log(this.runningInvestments);
+    console.log(this.runningInvestment);
   }
 
-  addInvestment(investment: Investment) {
-    this.investmentService.invest(investment);
+  addInvestment(investmentOption: InvestmentOption) {
+
+    this.investmentService.invest(new Investment(
+      this.investmentAmount,
+      investmentOption.duration,
+      investmentOption.interest
+    ));
     this.investmentOptions = this.investmentService.getInvestmentOptions();
     alert('investment created $');
   }
 
   nextClicked() {
     this.finished.emit();
+  }
+
+  handleMinus() {
+    if (this.investmentAmount >= 10) this.investmentAmount -= 10;
+  }
+  handlePlus() {
+    this.investmentAmount += 10;
   }
 }

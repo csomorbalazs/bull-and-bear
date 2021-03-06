@@ -1,11 +1,13 @@
 export class Investment {
+
+
   constructor(
     public amount: number,
     public duration: number,
-    public returnAmount: number
-  ) {}
+    public interest: number
+  ) { }
 
-  public decreaseDuration(){
-      this.duration--;
+  public decreaseDuration() {
+    this.duration--;
   }
 }

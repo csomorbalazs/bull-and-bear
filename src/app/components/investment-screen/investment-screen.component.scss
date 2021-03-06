@@ -1,0 +1,125 @@
+$option-height: 75px;
+
+.container {
+    background: linear-gradient(180deg, #2D2B61 0%, #46447B 100%);
+    text-align: center;
+}
+
+.investment-option-buttons {
+    display: flex;
+    flex-direction: column;
+    font-family: Balsamiq Sans;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 36px;
+    color: #FFFFFF;
+    margin: 0 auto;
+}
+
+.investment-option {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 80%;
+    text-align: center;
+    align-self: center;
+    height: $option-height;
+    line-height: $option-height;
+    padding-bottom: 5%;
+    max-width: 400px;
+}
+
+.investment-duration {
+    background: linear-gradient(180deg, #9A98C0 0%, #514E95 100%);
+    flex: 1;
+    border-radius: 13px 0px 0px 13px;
+}
+
+.investment-return-amount {
+    background: linear-gradient(180deg, #7FFCC0 0%, #51C58D 100%, #51C58D 100%);
+    flex: 2;
+    border-radius: 0px 13px 13px 0px;
+}
+
+.investment-return-amount img {
+    height: 35px;
+    vertical-align: middle
+}
+
+
+.image-text-container {
+    position: relative;
+    text-align: center;
+    height: $option-height;
+}
+
+.image-text-container img {
+    height: 100%;
+}
+
+.centered {
+    position: absolute;
+    top: 53%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+}
+
+input {
+    pointer-events: none;
+    text-align: center;
+}
+
+input[type="number"] {
+    -webkit-appearance: textfield !important;
+    -moz-appearance: textfield !important;
+    appearance: textfield !important;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.set-invest-amount {
+    height: 50px;
+    width: 80%;
+    padding-bottom: 30px;
+    display: flex;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.plusminus {
+    height: 100%;
+    width: 30%;
+    background: white;
+    border: none;
+    font-size: 40px;
+    color: white;
+    font-family: Balsamiq Sans;
+}
+
+.plus {
+    @extend .plusminus;
+    background: linear-gradient(180deg, #7FFCC0 0%, #51C58D 100%);
+    border-radius: 0px 13px 13px 0px;
+
+}
+
+.minus {
+    @extend .plusminus;
+    background: linear-gradient(180deg, #FA9C9C 0%, #E64246 100%);
+    border-radius: 13px 0px 0px 13px;
+
+}
+
+.num {
+    width: 39%;
+    border: none;
+    font-size: 30px;
+    background: linear-gradient(180deg, #514E95 0%, #9A98C0 51.04%);
+    color: white;
+    font-family: Balsamiq Sans;
+}
