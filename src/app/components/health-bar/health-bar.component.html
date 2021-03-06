@@ -1,1 +1,23 @@
-<p>health-bar: {{value}}</p>
+<div *ngIf="value == 1" class="score-box">
+    <img src="/assets/images/red-heart.svg">
+    <img src="/assets/images/white-heart.svg">
+    <img src="/assets/images/white-heart.svg">
+</div>
+
+<div *ngIf="value == 2" class="score-box">
+    <img src="/assets/images/red-heart.svg">
+    <img src="/assets/images/red-heart.svg">
+    <img src="/assets/images/white-heart.svg">
+</div>
+
+<div *ngIf="value == 3" class="score-box">
+    <img src="/assets/images/red-heart.svg">
+    <img src="/assets/images/red-heart.svg">
+    <img src="/assets/images/red-heart.svg">
+</div>
+
+<div *ngIf="value != 1 && value != 2 && value != 3" class="score-box">
+    <img src="/assets/images/white-heart.svg">
+    <img src="/assets/images/white-heart.svg">
+    <img src="/assets/images/white-heart.svg">
+</div>
