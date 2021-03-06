@@ -42,7 +42,6 @@ export class InvestmentScreenComponent implements OnInit {
         investmentOption.interest
       ));
       this.investmentOptions = this.investmentService.getInvestmentOptions();
-      alert('investment created $');
       this.finished.emit();
     }
   }
