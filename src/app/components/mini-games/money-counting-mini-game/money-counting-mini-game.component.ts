@@ -12,16 +12,33 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
   MiniGameState = MiniGameState;
   miniGameState: MiniGameState = MiniGameState.GAMEPLAY;
 
+  targetMoney: number;
+
   @Input() timeLimitInSeconds;
   @Output() finished = new EventEmitter<void>();
 
   constructor(private playerInfoService: PlayerInfoService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.targetMoney = this.getRandomNumberEndingWithFiveOrZero();
+  }
 
-  onMiniGameWon() {
-    this.playerInfoService.increaseScoreBy(50);
-    this.miniGameState = MiniGameState.WON;
+  // generates number between 500 and 2000, ending with 5 or 0
+  private getRandomNumberEndingWithFiveOrZero(): number {
+    let max = 400;
+    let min = 100;
+    return (Math.floor(Math.random() * (max - min + 1)) + min) * 5;
+  }
+
+  onCoinClicked(coinValue: number) {
+    let result = this.targetMoney - coinValue;
+    if (result < 0) {
+      this.onMiniGameLost();
+    } else if (result == 0) {
+      this.onMiniGameWon();
+    } else {
+      this.targetMoney -= coinValue;
+    }
   }
 
   onMiniGameLost() {
@@ -29,9 +46,8 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
     this.miniGameState = MiniGameState.LOST;
   }
 
-  onTimeIsUp() {
-    this.playerInfoService.decreaseCurrentHealth();
-    this.miniGameState = MiniGameState.LOST;
-    this.finished.emit();
+  onMiniGameWon() {
+    this.playerInfoService.increaseScoreBy(50);
+    this.miniGameState = MiniGameState.WON;
   }
 }

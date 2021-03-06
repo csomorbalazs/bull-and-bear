@@ -1,0 +1,26 @@
+.container {
+  height: 100%;
+  background: linear-gradient(197.54deg, #27255b 0%, #49477d 100%);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  .grid {
+    display: flex;
+    min-width: 320px;
+    height: 550px;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    .child {
+      flex: 1 0 33%;
+    }
+    button {
+      border: 0;
+      max-width: 200px;
+      background: transparent;
+    }
+    button:focus {
+      outline: 0;
+    }
+  }
+}

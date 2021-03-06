@@ -32,11 +32,12 @@ export class TimerComponent implements OnInit {
     this.timeLeftInMs = this.initialTimeInMs =
       Number(this.initialTimeInSeconds) * 1000;
     this.progressPercentage = 100;
-    setInterval(() => {
+    let timer = setInterval(() => {
       if (this.timeLeftInMs > 0) {
         this.updateTimer();
       } else {
         this.timeIsUp.emit();
+        clearInterval(timer);
       }
     }, 10);
   }
@@ -69,6 +70,7 @@ export class TimerComponent implements OnInit {
   styleTimer() {
     return {
       'background-color': this.currentColor,
+      position: 'absolute',
       width: this.progressPercentage + '%',
     };
   }
