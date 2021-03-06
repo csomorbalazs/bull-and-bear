@@ -14,20 +14,14 @@ export class InvestmentsService {
     new InvestmentOption(7, 3),
   ];
 
-  constructor(private playerInfoService: PlayerInfoService) { }
+  constructor(private playerInfoService: PlayerInfoService) {}
 
   getInvestmentOptions(): InvestmentOption[] {
     return this.investmentOptions;
   }
 
   invest(investment: Investment): void {
-    this.investments.push(
-      new Investment(
-        investment.amount,
-        investment.duration,
-        investment.interest
-      )
-    );
+    this.investments.push(new Investment(investment.amount, investment.duration, investment.interest));
 
     this.playerInfoService.decreaseScoreBy(investment.amount);
     console.log(this.investments);
@@ -50,10 +44,8 @@ export class InvestmentsService {
   addFinishedInvestmentsToPlayerScore() {
     this.getFinishedInvestments().forEach((i) => {
       this.playerInfoService.increaseScoreBy(i.amount * i.interest);
-      alert('score increased by ' + i.amount * i.interest);
     });
 
     this.investments = this.investments.filter((i) => i.duration > 0);
   }
-
 }
