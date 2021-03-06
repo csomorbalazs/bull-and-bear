@@ -24,6 +24,7 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
   selected = this.availableTests[this.getRandomIndex()];
 
   @Input() timeLimitInSeconds: number;
+  @Input() reward: number;
   @Output() finished = new EventEmitter<void>();
 
   constructor(private playerInfoService: PlayerInfoService) { }

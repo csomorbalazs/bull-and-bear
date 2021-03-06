@@ -1,12 +1,14 @@
-<br><br><br>
-<div *ngIf="result === MiniGameState.WON">
-  You won! *score increased animation*
+<div class="minigame-container container">
+  <div class="mini-game-result">
+    <img [src]="result === MiniGameState.WON ? 'assets/images/tick.svg' : 'assets/images/broken-heart.svg'">
+    <div class="coins" *ngIf="result === MiniGameState.WON">
+      <div>+{{reward}} </div>
+      <img src="assets/images/score-coin.svg">
+    </div>
+    <div class="hearts" *ngIf="result === MiniGameState.LOST">
+      <img [src]="health > 0 ? '/assets/images/red-heart.svg' : '/assets/images/white-heart.svg' ">
+      <img [src]="health > 1 ? '/assets/images/red-heart.svg' : '/assets/images/white-heart.svg' ">
+      <img [src]="health > 2 ? '/assets/images/red-heart.svg' : '/assets/images/white-heart.svg' ">
+    </div>
+  </div>
 </div>
-
-<div *ngIf="result === MiniGameState.LOST">
-  You lost! *heart lost animation*
-</div>
-
-<button style="margin-top: 50px" (click)="resultsViewed.emit()">
-  Go to lesson
-</button>

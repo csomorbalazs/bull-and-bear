@@ -16,7 +16,7 @@ export class InvestmentScreenComponent implements OnInit {
   finishedInvestments: Investment[];
   runningInvestment: Investment;
 
-  investmentAmount = 0;
+  investmentAmount = Math.round(this.playerInfoService.getCurrentScore() / 2 / 10) * 10;
 
   constructor(
     private investmentService: InvestmentsService,
@@ -28,7 +28,7 @@ export class InvestmentScreenComponent implements OnInit {
 
     this.investmentOptions = this.investmentService.getInvestmentOptions();
     this.finishedInvestments = this.investmentService.getFinishedInvestments();
-    this.runningInvestment = this.investmentService.getRunningInvestment();
+    if (this.investmentService.isRunningInvestment) this.runningInvestment = this.investmentService.getRunningInvestment();
 
     console.log(this.runningInvestment);
   }
@@ -42,7 +42,6 @@ export class InvestmentScreenComponent implements OnInit {
         investmentOption.interest
       ));
       this.investmentOptions = this.investmentService.getInvestmentOptions();
-      alert('investment created $');
       this.finished.emit();
     }
   }
