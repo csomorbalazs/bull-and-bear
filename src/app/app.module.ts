@@ -17,6 +17,7 @@ import { CasinoMiniGameComponent } from './components/mini-games/casino-mini-gam
 import { FakeOrNotComponent } from './components/mini-games/fake-or-not/fake-or-not.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,16 @@ import { FormsModule } from '@angular/forms';
     CasinoMiniGameComponent,
     FakeOrNotComponent,
   ],
-  imports: [BrowserModule, MatProgressSpinnerModule, FormsModule],
+  imports: [
+    BrowserModule,
+    MatProgressSpinnerModule,
+    FormsModule,
+    RouterModule.forRoot([
+      { path: 'start', component: StartScreenComponent },
+      { path: 'game', component: GameComponent },
+      { path: '', redirectTo: '/start', pathMatch: 'full' },
+    ]),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
