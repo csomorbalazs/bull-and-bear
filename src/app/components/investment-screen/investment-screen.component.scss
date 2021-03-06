@@ -33,12 +33,14 @@ $option-height: 75px;
     background: linear-gradient(180deg, #9A98C0 0%, #514E95 100%);
     flex: 1;
     border-radius: 13px 0px 0px 13px;
+    box-shadow: 0px 3px 0px #2C2971;
 }
 
 .investment-return-amount {
     background: linear-gradient(180deg, #7FFCC0 0%, #51C58D 100%, #51C58D 100%);
     flex: 2;
     border-radius: 0px 13px 13px 0px;
+    box-shadow: 0px 3px 0px #248B5A;
 }
 
 .investment-return-amount img {
@@ -105,6 +107,7 @@ input[type=number]::-webkit-outer-spin-button {
     @extend .plusminus;
     background: linear-gradient(180deg, #7FFCC0 0%, #51C58D 100%);
     border-radius: 0px 13px 13px 0px;
+    box-shadow: 0px 3px 0px #248B5A;
 
 }
 
@@ -112,7 +115,7 @@ input[type=number]::-webkit-outer-spin-button {
     @extend .plusminus;
     background: linear-gradient(180deg, #FA9C9C 0%, #E64246 100%);
     border-radius: 13px 0px 0px 13px;
-
+    box-shadow: 0px 3px 0px #7e2627;
 }
 
 .num {
@@ -122,4 +125,5 @@ input[type=number]::-webkit-outer-spin-button {
     background: linear-gradient(180deg, #514E95 0%, #9A98C0 51.04%);
     color: white;
     font-family: Balsamiq Sans;
+    box-shadow: 0px 3px 0px #2C2971;
 }
