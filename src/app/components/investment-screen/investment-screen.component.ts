@@ -16,7 +16,7 @@ export class InvestmentScreenComponent implements OnInit {
   finishedInvestments: Investment[];
   runningInvestment: Investment;
 
-  investmentAmount = 30;
+  investmentAmount = 0;
 
   constructor(
     private investmentService: InvestmentsService,
@@ -29,26 +29,22 @@ export class InvestmentScreenComponent implements OnInit {
     this.investmentOptions = this.investmentService.getInvestmentOptions();
     this.finishedInvestments = this.investmentService.getFinishedInvestments();
     this.runningInvestment = this.investmentService.getRunningInvestment();
-    /*     if (
-          this.investmentOptions.every(
-            (option) => !this.investmentService.hasMoneyForOption(option)
-          )
-        ) {
-          this.finished.emit();
-        } */
 
     console.log(this.runningInvestment);
   }
 
   addInvestment(investmentOption: InvestmentOption) {
 
-    this.investmentService.invest(new Investment(
-      this.investmentAmount,
-      investmentOption.duration,
-      investmentOption.interest
-    ));
-    this.investmentOptions = this.investmentService.getInvestmentOptions();
-    alert('investment created $');
+    if (this.investmentAmount > 0 && this.playerInfoService.getCurrentScore() >= this.investmentAmount) {
+      this.investmentService.invest(new Investment(
+        this.investmentAmount,
+        investmentOption.duration,
+        investmentOption.interest
+      ));
+      this.investmentOptions = this.investmentService.getInvestmentOptions();
+      alert('investment created $');
+      this.finished.emit();
+    }
   }
 
   nextClicked() {
@@ -59,6 +55,6 @@ export class InvestmentScreenComponent implements OnInit {
     if (this.investmentAmount >= 10) this.investmentAmount -= 10;
   }
   handlePlus() {
-    this.investmentAmount += 10;
+    if (this.playerInfoService.getCurrentScore() > this.investmentAmount) this.investmentAmount += 10;
   }
 }

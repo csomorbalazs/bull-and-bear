@@ -56,12 +56,4 @@ export class InvestmentsService {
     this.investments = this.investments.filter((i) => i.duration > 0);
   }
 
-  hasMoneyForOption(option: Investment): boolean {
-    return option.amount <= this.playerInfoService.getCurrentScore();
-  }
-
-  hasMoneyForAnyOption(): boolean {
-    //return this.investmentOptions.some((i) => this.hasMoneyForOption(i));
-    return true;
-  }
 }

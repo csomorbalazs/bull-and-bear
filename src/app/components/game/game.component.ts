@@ -54,7 +54,7 @@ export class GameComponent implements OnInit {
 
     if (this.playerInfoService.playerIsDead()) {
       this.gameState = GameState.ENDOFGAME;
-    } else if (this.investmentsService.hasMoneyForAnyOption()) {
+    } else if (this.playerInfoService.getCurrentScore() >= 10) {
       this.gameState = GameState.INVESTMENT;
     } else {
       this.loadRandomMiniGame();
