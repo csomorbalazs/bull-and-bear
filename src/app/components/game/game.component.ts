@@ -8,6 +8,7 @@ import { CasinoMiniGameComponent } from '../mini-games/casino-mini-game/casino-m
 import { MiniGame } from '../mini-games/mini-game';
 import { MoneyCountingMiniGameComponent } from '../mini-games/money-counting-mini-game/money-counting-mini-game.component';
 import { getRandomIndices } from 'src/app/utils/randomizer';
+import { MiniGameMetaData } from 'src/app/models/MiniGameMetaData';
 
 @Component({
   selector: 'game',
@@ -26,9 +27,22 @@ export class GameComponent implements OnInit {
 
   private currentMiniGameIndex: number;
 
-  miniGames: Type<any>[] = [MoneyCountingMiniGameComponent, CasinoMiniGameComponent, FakeOrNotComponent];
+  private miniGames: MiniGameMetaData[] = [
+    {
+      miniGameType: MoneyCountingMiniGameComponent,
+      minimumAge: 8
+    },
+    {
+      miniGameType: CasinoMiniGameComponent,
+      minimumAge: 8
+    },
+    {
+      miniGameType: FakeOrNotComponent,
+      minimumAge: 12
+    }
+  ];
 
-  private miniGameIndices = getRandomIndices(this.miniGames.length);
+  private miniGameIndices: number[];
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -37,6 +51,9 @@ export class GameComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.miniGames = this.miniGames.filter(game => game.minimumAge <= this.playerInfoService.getAge());
+    this.miniGameIndices = getRandomIndices(this.miniGames.length);
+
     this.playerInfoService.reset();
     this.loadRandomMiniGame();
   }
@@ -79,7 +96,7 @@ export class GameComponent implements OnInit {
 
   loadComponent() {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      this.miniGames[this.currentMiniGameIndex]
+      this.miniGames[this.currentMiniGameIndex].miniGameType
     );
 
     const viewContainerRef = this.miniGame.viewContainerRef;

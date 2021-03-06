@@ -1,2 +1,28 @@
-<p>end-of-game-screen works!</p>
-<button (click)="onSecondChanceClicked()">Buy second chance -{{ secondChancePrice }}</button>
+<div class="container">
+  <div class="end-component">
+    <h1 class="title">Játék vége</h1>
+    <div class="result-view">
+      <div class="circle">
+        <img class="score-coin" src="assets/images/score-coin.svg" alt="Pénzérme" />
+        <h1 class="result">{{ score }}</h1>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="secondChanceAvailable()" class="second-chance">
+    <div class="second-container">
+      <div class="second-card">
+        <h1 class="title">Második esély?</h1>
+        <div class="content">
+          <img class="revive-icon" src="assets/images/revive.svg" alt="revive" />
+          <mat-spinner></mat-spinner>
+        </div>
+        <button (click)="onSecondChanceClicked()" class="red-button blue-button">
+          <img class="score-coin" src="assets/images/score-coin.svg" alt="Pénzérme" />
+          <h1 class="result">{{ secondChancePrice }}</h1>
+        </button>
+      </div>
+    </div>
+  </div>
+  <img class="characters" src="assets/images/start-screen.png" alt="" />
+  <button (click)="onRestartClicked()" class="replay-button blue-button red-button">ÚJ JÁTÉK</button>
+</div>

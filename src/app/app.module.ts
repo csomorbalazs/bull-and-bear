@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { GameComponent } from './components/game/game.component';
 import { StartScreenComponent } from './components/start-screen/start-screen.component';
@@ -16,8 +15,10 @@ import { MoneyCountingMiniGameComponent } from './components/mini-games/money-co
 import { MiniGameDirective } from './directives/mini-game.directive';
 import { CasinoMiniGameComponent } from './components/mini-games/casino-mini-game/casino-mini-game.component';
 import { FakeOrNotComponent } from './components/mini-games/fake-or-not/fake-or-not.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 import { RunningInvestmentScreenComponent } from './running-investment-screen/running-investment-screen.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -38,8 +39,17 @@ import { RunningInvestmentScreenComponent } from './running-investment-screen/ru
     FakeOrNotComponent,
     RunningInvestmentScreenComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [
+    BrowserModule,
+    MatProgressSpinnerModule,
+    FormsModule,
+    RouterModule.forRoot([
+      { path: 'start', component: StartScreenComponent },
+      { path: 'game', component: GameComponent },
+      { path: '', redirectTo: '/start', pathMatch: 'full' },
+    ]),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

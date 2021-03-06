@@ -61,6 +61,7 @@
 
 .start-screen > input:focus {
   outline: none;
+  user-select: initial;
 }
 
 .invalid {

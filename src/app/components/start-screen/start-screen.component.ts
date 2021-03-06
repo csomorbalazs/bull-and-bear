@@ -1,10 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PlayerInfoService } from 'src/app/services/player-info.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'start-screen',
   templateUrl: './start-screen.component.html',
-  styleUrls: ['./start-screen.component.scss']
+  styleUrls: ['./start-screen.component.scss'],
 })
 export class StartScreenComponent implements OnInit {
   @Output() gameStarted: EventEmitter<void> = new EventEmitter<void>();
@@ -13,7 +14,7 @@ export class StartScreenComponent implements OnInit {
   age: number;
   ageInvalid = false;
 
-  constructor(public playerInfoService: PlayerInfoService) { }
+  constructor(public playerInfoService: PlayerInfoService, private router: Router) {}
 
   ngOnInit(): void {
     this.ageAlreadyProvided = this.playerInfoService.getAge() !== null;
@@ -23,6 +24,7 @@ export class StartScreenComponent implements OnInit {
     if (!this.ageAlreadyProvided) {
       this.showAgeInputScreen = true;
     } else {
+      this.router.navigateByUrl('/game');
       this.gameStarted.emit();
     }
   }
