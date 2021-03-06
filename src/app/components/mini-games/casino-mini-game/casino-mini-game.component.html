@@ -1,20 +1,19 @@
-CasinoMiniGame
-<div *ngIf="miniGameState === MiniGameState.GAMEPLAY">
-  <timer
-    [initialTimeInSeconds]="timeLimitInSeconds"
-    (timeIsUp)="onMiniGameLost()"
-  ></timer>
-  <button>Win</button>
-  <button>Lose</button>
+<div class="container" *ngIf="miniGameState === MiniGameState.GAMEPLAY">
+  <timer [initialTimeInSeconds]="timeLimitInSeconds" (timeIsUp)="onMiniGameWon()"></timer>
+  <h1>Piros vagy fekete?</h1>
+  <div class="curtains">
+    <img src="/assets/casino/curtain_left.svg" />
+    <img src="/assets/casino/curtain_right.svg" />
+  </div>
+  <img class="character" src="/assets/images/bear-talking.png" />
+  <img class="rotating roulette-wheel" src="/assets/casino/roulette_wheel.png" />
+
+  <button class="red" (click)="onMiniGameLost()"></button>
+  <button class="black" (click)="onMiniGameLost()"></button>
 </div>
-<mini-game-result
-  *ngIf="
+<mini-game-result *ngIf="
     miniGameState === MiniGameState.WON || miniGameState === MiniGameState.LOST
-  "
-  [result]="miniGameState"
-  (resultsViewed)="miniGameState = MiniGameState.LESSON"
-></mini-game-result>
-<lesson-screen
-  *ngIf="miniGameState == MiniGameState.LESSON"
-  (lessonViewed)="finished.emit()"
-></lesson-screen>
+  " [result]="miniGameState" [reward]="reward" (resultsViewed)="miniGameState = MiniGameState.LESSON">
+</mini-game-result>
+<lesson-screen *ngIf="miniGameState == MiniGameState.LESSON" [character]="Character.BULL" [text]="lessonText"
+  (lessonViewed)="finished.emit()"></lesson-screen>

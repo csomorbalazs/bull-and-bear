@@ -1,22 +1,35 @@
 .container {
   background: linear-gradient(197.54deg, #27255b 0%, #49477d 100%);
   display: flex;
-  flex-flow: column nowrap;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
   align-items: center;
 
   .grid {
+    height: calc(100% - 100px);
     display: flex;
-    height: 100%;
-    flex-flow: row wrap;
+    display: -webkit-flex;
+    flex: 1 0 auto;
+    -webkit-flex: 1 0 auto;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 
     .child {
-      flex: 1 0 50%;
+      flex: 1 0 40%;
+      -webkit-flex: 1 0 40%;
+      box-sizing: border-box;
     }
 
     button {
       border: 0;
+      box-sizing: border-box;
       max-width: 200px;
       background: transparent;
     }

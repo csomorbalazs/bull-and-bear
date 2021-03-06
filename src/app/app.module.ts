@@ -36,7 +36,6 @@ import { FormsModule } from '@angular/forms';
     MiniGameDirective,
     CasinoMiniGameComponent,
     FakeOrNotComponent,
-    RouletteComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],
