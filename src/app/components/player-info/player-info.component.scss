@@ -1,7 +1,10 @@
 #player-info-box {
-    background: purple;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 10px;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
