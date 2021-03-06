@@ -63,7 +63,7 @@ export class PlayerInfoService {
     if (strHighscore === null) {
       return 0;
     } else {
-      Number.parseInt(strHighscore);
+      return Number.parseInt(strHighscore);
     }
   }
 
@@ -76,7 +76,7 @@ export class PlayerInfoService {
     if (strAge === null) {
       return null;
     } else {
-      Number.parseInt(strAge);
+      return Number.parseInt(strAge);
     }
   }
 
