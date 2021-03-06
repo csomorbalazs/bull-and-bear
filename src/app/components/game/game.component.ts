@@ -50,7 +50,10 @@ export class GameComponent implements OnInit {
       this.gameState = GameState.ENDOFGAME;
     } else if (this.playerInfoService.getCurrentScore() >= 10 && !this.investmentsService.isRunningInvestment()) {
       this.gameState = GameState.INVESTMENT;
-    } else {
+    } else if (this.investmentsService.isRunningInvestment()) {
+      this.gameState = GameState.RUNNINGINVESTMENT;
+    }
+    else {
       this.loadRandomMiniGame();
     }
   }

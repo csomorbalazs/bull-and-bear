@@ -54,7 +54,6 @@ export class InvestmentsService {
   addFinishedInvestmentsToPlayerScore() {
     this.getFinishedInvestments().forEach((i) => {
       this.playerInfoService.increaseScoreBy(i.amount * i.interest);
-      alert('score increased by ' + i.amount * i.interest);
     });
 
     this.investments = this.investments.filter((i) => i.duration > 0);

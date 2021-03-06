@@ -17,6 +17,7 @@ import { MiniGameDirective } from './directives/mini-game.directive';
 import { CasinoMiniGameComponent } from './components/mini-games/casino-mini-game/casino-mini-game.component';
 import { FakeOrNotComponent } from './components/mini-games/fake-or-not/fake-or-not.component';
 import { FormsModule } from '@angular/forms';
+import { RunningInvestmentScreenComponent } from './running-investment-screen/running-investment-screen.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { FormsModule } from '@angular/forms';
     MiniGameDirective,
     CasinoMiniGameComponent,
     FakeOrNotComponent,
+    RunningInvestmentScreenComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],
