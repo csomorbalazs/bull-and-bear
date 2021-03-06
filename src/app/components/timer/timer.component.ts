@@ -69,9 +69,18 @@ export class TimerComponent implements OnInit {
 
   styleTimer() {
     return {
-      'background-color': this.currentColor,
       position: 'absolute',
+      left: '0',
+      top: '0',
+      transition: 'background-color 1s',
       width: this.progressPercentage + '%',
+      overflow: 'hidden',
+      padding: '0px',
+      'background-color': this.currentColor,
+      'min-height': '8px',
+      'z-index': '9999',
+      'white-space': 'nowrap',
+      'border-radius': '10px',
     };
   }
 }

@@ -1,1 +1,107 @@
+.container {
+  height: 100%;
+  background: linear-gradient(197.69deg, #6b3a27 23.33%, #4b2212 80.14%);
+  overflow: hidden;
+  position: relative;
+  h1 {
+    position: absolute;
+    z-index: 4;
+    left: 0;
+    top: 20%;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+  .curtains {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+    img {
+      height: 80vh;
+      width: auto;
+    }
+  }
+  .character {
+    position: absolute;
+    z-index: 2;
+    max-width: 90%;
+    height: auto;
+    margin: auto;
+    top: 25%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  .roulette-wheel {
+    position: absolute;
+    height: auto;
+    bottom: -30%;
+    width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    left: 0;
+    right: 0;
+    z-index: 3;
+  }
+}
 
+button {
+  position: relative;
+  z-index: 4;
+  box-sizing: border-box;
+  position: absolute;
+  width: 40%;
+  max-width: 91px;
+  height: 82px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.red {
+  background: linear-gradient(0deg, #e54045 -5.9%, #f45f58 84.03%);
+  box-shadow: 0px 3px 0px #d01618;
+  right: 10%;
+}
+.black {
+  background: linear-gradient(180deg, #4b575c 25.61%, #263238 100%);
+  box-shadow: 0px 3px 0px #414e55;
+  left: 10%;
+}
+
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.rotating {
+  -webkit-animation: rotating 2.5s linear infinite;
+  -moz-animation: rotating 2.5s linear infinite;
+  -ms-animation: rotating 2.5s linear infinite;
+  -o-animation: rotating 2.5s linear infinite;
+  animation: rotating 2.5s linear infinite;
+}

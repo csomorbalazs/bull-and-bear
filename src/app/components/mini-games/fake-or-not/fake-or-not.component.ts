@@ -17,16 +17,17 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
   MiniGameState = MiniGameState;
   miniGameState: MiniGameState = MiniGameState.GAMEPLAY;
   availableTests: FakeTest[] = [
-    { imgUrl: '../../assets/fake-or-not/sms_spam_01.png', isValid: false },
-    { imgUrl: '../../assets/fake-or-not/otp.png', isValid: true },
+    { imgUrl: 'assets/fake-or-not/sms_spam_01.png', isValid: false },
+    { imgUrl: 'assets/fake-or-not/otp.png', isValid: true },
   ];
 
   selected = this.availableTests[this.getRandomIndex()];
 
   @Input() timeLimitInSeconds: number;
+  @Input() reward: number;
   @Output() finished = new EventEmitter<void>();
 
-  constructor(private playerInfoService: PlayerInfoService) {}
+  constructor(private playerInfoService: PlayerInfoService) { }
 
   onMiniGameWon(): void {
     this.playerInfoService.increaseScoreBy(50);
@@ -37,7 +38,7 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
     this.miniGameState = MiniGameState.LOST;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   evaluateResult(clicked: boolean) {
     if (clicked === this.selected.isValid) {
@@ -45,12 +46,6 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
     } else {
       this.onMiniGameLost();
     }
-  }
-
-  onTimeIsUp() {
-    this.playerInfoService.decreaseCurrentHealth();
-    this.miniGameState = MiniGameState.LOST;
-    this.finished.emit();
   }
 
   getRandomIndex() {

@@ -1,21 +1,22 @@
 import { Investment } from './../models/Investment';
 import { Injectable } from '@angular/core';
 import { PlayerInfoService } from './player-info.service';
+import { InvestmentOption } from '../models/InvestementOption';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InvestmentsService {
   private investments: Investment[] = [];
-  private investmentOptions: Investment[] = [
-    new Investment(100, 1, 110),
-    new Investment(100, 3, 120),
-    new Investment(100, 3, 120),
+  private investmentOptions: InvestmentOption[] = [
+    new InvestmentOption(1, 1.5),
+    new InvestmentOption(3, 2),
+    new InvestmentOption(7, 3),
   ];
 
-  constructor(private playerInfoService: PlayerInfoService) {}
+  constructor(private playerInfoService: PlayerInfoService) { }
 
-  getInvestmentOptions(): Investment[] {
+  getInvestmentOptions(): InvestmentOption[] {
     return this.investmentOptions;
   }
 
@@ -24,11 +25,12 @@ export class InvestmentsService {
       new Investment(
         investment.amount,
         investment.duration,
-        investment.returnAmount
+        investment.interest
       )
     );
 
     this.playerInfoService.decreaseScoreBy(investment.amount);
+    console.log(this.investments);
   }
 
   miniGameElapsed() {
@@ -41,24 +43,17 @@ export class InvestmentsService {
     return this.investments.filter((i) => i.duration <= 0);
   }
 
-  getRunningInvestments(): Investment[] {
-    return this.investments.filter((i) => i.duration > 0);
+  getRunningInvestment(): Investment {
+    return this.investments.filter((i) => i.duration > 0)[0];
   }
 
   addFinishedInvestmentsToPlayerScore() {
     this.getFinishedInvestments().forEach((i) => {
-      this.playerInfoService.increaseScoreBy(i.returnAmount);
-      alert('score increased by ' + i.returnAmount);
+      this.playerInfoService.increaseScoreBy(i.amount * i.interest);
+      alert('score increased by ' + i.amount * i.interest);
     });
 
     this.investments = this.investments.filter((i) => i.duration > 0);
   }
 
-  hasMoneyForOption(option: Investment): boolean {
-    return option.amount <= this.playerInfoService.getCurrentScore();
-  }
-
-  hasMoneyForAnyOption(): boolean {
-    return this.investmentOptions.some((i) => this.hasMoneyForOption(i));
-  }
 }

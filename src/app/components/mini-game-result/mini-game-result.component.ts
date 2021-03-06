@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MiniGameState } from 'src/app/models/MiniGameState';
+import { PlayerInfoService } from 'src/app/services/player-info.service';
 
 @Component({
   selector: 'mini-game-result',
@@ -9,9 +10,16 @@ import { MiniGameState } from 'src/app/models/MiniGameState';
 export class MiniGameResultComponent implements OnInit {
   MiniGameState = MiniGameState;
   @Input() result: MiniGameState;
+  @Input() reward: number;
   @Output() resultsViewed = new EventEmitter<void>();
 
-  constructor() {}
+  health: number;
 
-  ngOnInit(): void {}
+  constructor(private playerInfoService: PlayerInfoService) { }
+
+  ngOnInit(): void {
+    this.health = this.playerInfoService.getCurrentHealth();
+
+    setInterval(() => this.resultsViewed.emit(), 2000);
+  }
 }
