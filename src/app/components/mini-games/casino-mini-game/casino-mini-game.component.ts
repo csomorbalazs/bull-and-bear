@@ -19,19 +19,13 @@ export class CasinoMiniGameComponent implements OnInit, MiniGame {
 
   ngOnInit(): void {}
 
-  onMiniGameWon() {
-    this.playerInfoService.increaseScoreBy(50);
-    this.miniGameState = MiniGameState.WON;
-  }
-
   onMiniGameLost() {
     this.playerInfoService.decreaseCurrentHealth();
     this.miniGameState = MiniGameState.LOST;
   }
 
-  onTimeIsUp() {
-    this.playerInfoService.decreaseCurrentHealth();
-    this.miniGameState = MiniGameState.LOST;
-    this.finished.emit();
+  onMiniGameWon() {
+    this.playerInfoService.increaseScoreBy(50);
+    this.miniGameState = MiniGameState.WON;
   }
 }

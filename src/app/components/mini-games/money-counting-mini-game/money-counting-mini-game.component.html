@@ -1,46 +1,33 @@
-<div *ngIf="miniGameState === MiniGameState.GAMEPLAY">
-  <!-- <timer
-    [initialTimeInSeconds]="timeLimitInSeconds"
-    (timeIsUp)="onTimeIsUp()"
-  ></timer> -->
-  <div class="mini-game-container">
-    <h1>{{ targetMoney }} Forint</h1>
-    <div class="grid">
-      <div class="column">
-        <button (click)="onCoinClicked(50)">
-          <img src="../../assets/money-counting/50_coin.svg" />
-        </button>
-        <button (click)="onCoinClicked(200)">
-          <img src="../../assets/money-counting/200_coin.svg" />
-        </button>
-        <button (click)="onCoinClicked(10)">
-          <img src="../../assets/money-counting/10_coin.svg" />
-        </button>
-      </div>
-      <div class="column">
-        <button (click)="onCoinClicked(20)">
-          <img src="../../assets/money-counting/20_coin.svg" />
-        </button>
-        <button (click)="onCoinClicked(10)">
-          <img src="../../assets/money-counting/10_coin.svg" />
-        </button>
-        <button (click)="onCoinClicked(5)">
-          <img src="../../assets/money-counting/5_coin.svg" />
-        </button>
-      </div>
-    </div>
-    <button (click)="onMiniGameWon()">Win</button>
-    <button (click)="onMiniGameLost()">Lose</button>
+<timer
+  [initialTimeInSeconds]="timeLimitInSeconds"
+  (timeIsUp)="onMiniGameLost()"
+></timer>
+<div class="container" *ngIf="miniGameState === MiniGameState.GAMEPLAY">
+  <h1>{{ targetMoney }} Forint</h1>
+  <div class="grid">
+    <button class="child" (click)="onCoinClicked(50)">
+      <img src="../../assets/money-counting/50_coin.svg" />
+    </button>
+    <button class="child" (click)="onCoinClicked(20)">
+      <img src="../../assets/money-counting/20_coin.svg" />
+    </button>
+    <button class="child" (click)="onCoinClicked(200)">
+      <img src="../../assets/money-counting/200_coin.svg" />
+    </button>
+    <button class="child" (click)="onCoinClicked(10)">
+      <img src="../../assets/money-counting/10_coin.svg" />
+    </button>
+    <button class="child" (click)="onCoinClicked(100)">
+      <img src="../../assets/money-counting/100_coin.svg" />
+    </button>
+    <button class="child" (click)="onCoinClicked(5)">
+      <img src="../../assets/money-counting/5_coin.svg" />
+    </button>
   </div>
 </div>
-<mini-game-result
-  *ngIf="
+<mini-game-result *ngIf="
     miniGameState === MiniGameState.WON || miniGameState === MiniGameState.LOST
-  "
-  [result]="miniGameState"
-  (resultsViewed)="miniGameState = MiniGameState.LESSON"
-></mini-game-result>
-<lesson-screen
-  *ngIf="miniGameState == MiniGameState.LESSON"
-  (lessonViewed)="finished.emit()"
-></lesson-screen>
+  " [result]="miniGameState" (resultsViewed)="miniGameState = MiniGameState.LESSON"></mini-game-result>
+<lesson-screen *ngIf="miniGameState == MiniGameState.LESSON"
+  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
+  [character]="Character.BEAR" (lessonViewed)="finished.emit()"></lesson-screen>

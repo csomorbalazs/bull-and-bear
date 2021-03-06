@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Character } from 'src/app/models/Character';
 import { MiniGameState } from 'src/app/models/MiniGameState';
 import { PlayerInfoService } from 'src/app/services/player-info.service';
 import { MiniGame } from '../mini-game';
@@ -10,6 +11,7 @@ import { MiniGame } from '../mini-game';
 })
 export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
   MiniGameState = MiniGameState;
+  Character = Character;
   miniGameState: MiniGameState = MiniGameState.GAMEPLAY;
 
   targetMoney: number;
@@ -17,7 +19,7 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
   @Input() timeLimitInSeconds;
   @Output() finished = new EventEmitter<void>();
 
-  constructor(private playerInfoService: PlayerInfoService) {}
+  constructor(private playerInfoService: PlayerInfoService) { }
 
   ngOnInit(): void {
     this.targetMoney = this.getRandomNumberEndingWithFiveOrZero();
@@ -33,27 +35,12 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
   onCoinClicked(coinValue: number) {
     let result = this.targetMoney - coinValue;
     if (result < 0) {
-      this.miniGameLost();
+      this.onMiniGameLost();
     } else if (result == 0) {
-      this.miniGameWon();
+      this.onMiniGameWon();
     } else {
       this.targetMoney -= coinValue;
     }
-  }
-
-  private miniGameLost() {
-    this.playerInfoService.decreaseCurrentHealth();
-    this.miniGameState = MiniGameState.LOST;
-  }
-
-  private miniGameWon() {
-    this.playerInfoService.increaseScoreBy(50);
-    this.miniGameState = MiniGameState.WON;
-  }
-
-  onMiniGameWon() {
-    this.playerInfoService.increaseScoreBy(50);
-    this.miniGameState = MiniGameState.WON;
   }
 
   onMiniGameLost() {
@@ -61,7 +48,8 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
     this.miniGameState = MiniGameState.LOST;
   }
 
-  onTimeIsUp() {
-    this.miniGameLost();
+  onMiniGameWon() {
+    this.playerInfoService.increaseScoreBy(50);
+    this.miniGameState = MiniGameState.WON;
   }
 }
