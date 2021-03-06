@@ -13,6 +13,7 @@ import { PlayerInfoService } from 'src/app/services/player-info.service';
 import { CasinoMiniGameComponent } from '../mini-games/casino-mini-game/casino-mini-game.component';
 import { MiniGame } from '../mini-games/mini-game';
 import { MoneyCountingMiniGameComponent } from '../mini-games/money-counting-mini-game/money-counting-mini-game.component';
+import { getRandomIndices } from 'src/app/utils/randomizer';
 
 @Component({
   selector: 'game',
@@ -29,13 +30,15 @@ export class GameComponent implements OnInit {
 
   @ViewChild(MiniGameDirective, { static: true }) miniGame: MiniGameDirective;
 
-  private currentMiniGameIndex: number = 0;
+  private currentMiniGameIndex: number;
 
   miniGames: Type<any>[] = [
     MoneyCountingMiniGameComponent,
     CasinoMiniGameComponent,
     FakeOrNotComponent,
   ];
+
+  private miniGameIndices = getRandomIndices(this.miniGames.length);
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -45,7 +48,7 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.playerInfoService.reset();
-    this.loadComponent();
+    this.loadRandomMiniGame();
   }
 
   onMiniGameFinished() {
@@ -72,8 +75,11 @@ export class GameComponent implements OnInit {
   }
 
   loadRandomMiniGame() {
-    this.currentMiniGameIndex =
-      (this.currentMiniGameIndex + 1) % this.miniGames.length;
+    if (this.miniGameIndices.length === 0) {
+      this.miniGameIndices = getRandomIndices(this.miniGames.length);
+    }
+
+    this.currentMiniGameIndex = this.miniGameIndices.pop();
     this.loadComponent();
     this.gameState = GameState.MINIGAME;
   }
