@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PlayerInfoService } from 'src/app/services/player-info.service';
 
@@ -13,11 +14,10 @@ export class EndOfGameScreenComponent implements OnInit {
   secondChancePrice: number = 0;
   score = this.playerInfoService.getCurrentScore();
 
-  constructor(private playerInfoService: PlayerInfoService) {}
+  constructor(private playerInfoService: PlayerInfoService, private router: Router) {}
 
   ngOnInit(): void {
-    this.secondChancePrice =
-      this.secondChanceInitialPrice * Number(this.secondChancePriceMultiplier);
+    this.secondChancePrice = this.secondChanceInitialPrice * Number(this.secondChancePriceMultiplier);
   }
 
   secondChanceAvailable(): boolean {
@@ -32,13 +32,21 @@ export class EndOfGameScreenComponent implements OnInit {
   onSecondChanceClicked() {
     if (this.secondChanceAvailable()) {
       this.buyHealth();
-      this.secondChancePrice =
-        this.secondChanceInitialPrice *
-        Number(this.secondChancePriceMultiplier);
+      this.secondChancePrice = this.secondChanceInitialPrice * Number(this.secondChancePriceMultiplier);
       this.secondChance.emit();
     } else {
       console.log('not enough score');
     }
+  }
+
+  onRestartClicked() {
+    this.router.navigateByUrl('/start');
+  }
+
+  onExitClicked() {
+    console.log('exit');
+
+    this.router.navigateByUrl('/start');
   }
 
   private update() {}
