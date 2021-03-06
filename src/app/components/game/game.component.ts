@@ -30,16 +30,16 @@ export class GameComponent implements OnInit {
   private miniGames: MiniGameMetaData[] = [
     {
       miniGameType: MoneyCountingMiniGameComponent,
-      minimumAge: 8
+      minimumAge: 0,
     },
     {
       miniGameType: CasinoMiniGameComponent,
-      minimumAge: 8
+      minimumAge: 0,
     },
     {
       miniGameType: FakeOrNotComponent,
-      minimumAge: 12
-    }
+      minimumAge: 12,
+    },
   ];
 
   private miniGameIndices: number[];
@@ -48,10 +48,10 @@ export class GameComponent implements OnInit {
     private componentFactoryResolver: ComponentFactoryResolver,
     private playerInfoService: PlayerInfoService,
     private investmentsService: InvestmentsService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.miniGames = this.miniGames.filter(game => game.minimumAge <= this.playerInfoService.getAge());
+    this.miniGames = this.miniGames.filter((game) => game.minimumAge <= this.playerInfoService.getAge());
     this.miniGameIndices = getRandomIndices(this.miniGames.length);
 
     this.playerInfoService.reset();
