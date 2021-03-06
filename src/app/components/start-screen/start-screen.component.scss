@@ -2,8 +2,6 @@
 
 #start-screen {
     height: 100%;
-    padding: 0;
-    margin: 0;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -69,31 +67,4 @@
     color: #FFFFFF;
     cursor: pointer;
     box-shadow: 0px 3px 0px #D01618;
-}
-
-#high-score-box {
-
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 3px 10px;
-    margin-top: 10px;
-    width: 23%;
-    max-width: 101px;
-    background: rgba(255, 255, 255, 0.25);
-    border-radius: 19px;
-    font-family: Balsamiq Sans;
-    font-weight: bold;
-    font-size: 24px;
-    color: #FFFFFF;
-    text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.25);
-}
-
-#high-score-box img {
-    height: 75%;
 }

@@ -8,7 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HealthBarComponent implements OnInit {
   @Input() value: number;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void { }
 

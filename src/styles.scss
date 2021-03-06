@@ -5,5 +5,29 @@
 body,
 html {
     height: 100%;
+    padding: 0;
     margin: 0;
+}
+
+.score-box {
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 13px;
+    margin-top: 10px;
+    width: 90px;
+    min-height: 30px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 19px;
+    font-family: Balsamiq Sans;
+    font-weight: bold;
+    font-size: 24px;
+    color: #FFFFFF;
+    text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.25);
 }
