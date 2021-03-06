@@ -31,14 +31,9 @@
   <button (click)="onMiniGameWon()">Win</button>
   <button (click)="onMiniGameLost()">Lose</button>
 </div>
-<mini-game-result
-  *ngIf="
+<mini-game-result *ngIf="
     miniGameState === MiniGameState.WON || miniGameState === MiniGameState.LOST
-  "
-  [result]="miniGameState"
-  (resultsViewed)="miniGameState = MiniGameState.LESSON"
-></mini-game-result>
-<lesson-screen
-  *ngIf="miniGameState == MiniGameState.LESSON"
-  (lessonViewed)="finished.emit()"
-></lesson-screen>
+  " [result]="miniGameState" (resultsViewed)="miniGameState = MiniGameState.LESSON"></mini-game-result>
+<lesson-screen *ngIf="miniGameState == MiniGameState.LESSON"
+  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
+  [character]="Character.BEAR" (lessonViewed)="finished.emit()"></lesson-screen>

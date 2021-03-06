@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Character } from '../../models/Character';
 
 @Component({
   selector: 'lesson-screen',
@@ -6,8 +7,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./lesson-screen.component.scss'],
 })
 export class LessonScreenComponent implements OnInit {
-  @Output() lessonViewed = new EventEmitter<void>();
-  constructor() {}
+  Character = Character;
 
-  ngOnInit(): void {}
+  @Input() text: string = "";
+  @Input() character: Character;
+  @Output() lessonViewed = new EventEmitter<void>();
+
+  constructor() { }
+
+  ngOnInit(): void { }
 }
