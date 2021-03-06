@@ -9,7 +9,7 @@ export class PlayerInfoService {
   private playerInfo: PlayerInfo = new PlayerInfo(3, 0);
   playerInfoMessage = new BehaviorSubject(this.playerInfo);
 
-  constructor() {}
+  constructor() { }
 
   getCurrentScore() {
     return this.playerInfo.currentScore;
@@ -68,6 +68,19 @@ export class PlayerInfoService {
   }
 
   setHighscore(value: number) {
-    localStorage.setItem('highScore', value.toString());
+    localStorage.setItem('highscore', value.toString());
+  }
+
+  getAge(): number {
+    const strAge = localStorage.getItem('age');
+    if (strAge === null) {
+      return null;
+    } else {
+      Number.parseInt(strAge);
+    }
+  }
+
+  setAge(value: number) {
+    localStorage.setItem('age', value.toString());
   }
 }
