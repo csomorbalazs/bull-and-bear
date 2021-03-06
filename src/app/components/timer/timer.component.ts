@@ -71,6 +71,9 @@ export class TimerComponent implements OnInit {
     return {
       'background-color': this.currentColor,
       position: 'absolute',
+      left: '0',
+      top: '0',
+      transition: 'background-color 1s',
       width: this.progressPercentage + '%',
     };
   }
