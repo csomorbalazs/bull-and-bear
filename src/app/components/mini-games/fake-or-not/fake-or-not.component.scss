@@ -1,0 +1,82 @@
+.container {
+  height: 100%;
+  background: linear-gradient(262deg, #ff7854, #fd267d);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem;
+}
+
+// .content {
+//   height: 100%;
+//   display: flex;
+//   align-items: center;
+// }
+
+h1 {
+  font-family: Balsamiq Sans;
+  color: white;
+}
+.card {
+  box-sizing: border-box;
+  height: 70%;
+  width: 95%;
+  padding: 20px !important;
+  background: white;
+  border-radius: 8px;
+  padding: 0rem 5rem;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-image {
+  align-self: center;
+  justify-self: center;
+  max-height: 70%;
+  max-width: 90%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+}
+
+.buttons {
+  margin-top: 10%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.button-tinder {
+  text-align: center;
+  width: 120px;
+  margin: 0px 10px;
+  padding: 15px 0px;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 29px;
+  background: #ffffff;
+  box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+  border: white;
+  font-family: Balsamiq Sans;
+}
+
+.positive-color {
+  background: linear-gradient(#ff7956, #fd267d);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.negative-color {
+  background: linear-gradient(262deg, #64f0e0, #02df8b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
