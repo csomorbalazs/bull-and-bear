@@ -22,10 +22,16 @@
     </button>
   </div>
 </div>
-<mini-game-result *ngIf="
-    miniGameState === MiniGameState.WON || miniGameState === MiniGameState.LOST
-  " [result]="miniGameState" [reward]="reward" (resultsViewed)="miniGameState = MiniGameState.LESSON">
+<mini-game-result
+  *ngIf="miniGameState === MiniGameState.WON || miniGameState === MiniGameState.LOST"
+  [result]="miniGameState"
+  [reward]="reward"
+  (resultsViewed)="miniGameState = MiniGameState.LESSON"
+>
 </mini-game-result>
-<lesson-screen *ngIf="miniGameState == MiniGameState.LESSON"
+<lesson-screen
+  *ngIf="miniGameState == MiniGameState.LESSON"
   text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
-  [character]="Character.BEAR" (lessonViewed)="finished.emit()"></lesson-screen>
+  [character]="Character.BEAR"
+  (lessonViewed)="finished.emit()"
+></lesson-screen>
