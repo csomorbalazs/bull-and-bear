@@ -1,3 +1,4 @@
+import { FakeOrNotComponent } from './../mini-games/fake-or-not/fake-or-not.component';
 import {
   Component,
   ComponentFactoryResolver,
@@ -27,11 +28,12 @@ export class GameComponent implements OnInit {
 
   @ViewChild(MiniGameDirective, { static: true }) miniGame: MiniGameDirective;
 
-  private currentMiniGameIndex: number = 0;
+  private currentMiniGameIndex: number = 2;
 
   miniGames: Type<any>[] = [
     MoneyCountingMiniGameComponent,
     CasinoMiniGameComponent,
+    FakeOrNotComponent,
   ];
 
   constructor(

@@ -1,11 +1,9 @@
 .container {
-  height: 100%;
   background: linear-gradient(262deg, #ff7854, #fd267d);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 0.7rem;
+  justify-content: space-around;
 }
 
 // .content {
@@ -15,6 +13,7 @@
 // }
 
 h1 {
+  margin: 1rem;
   font-family: Balsamiq Sans;
   color: white;
 }
@@ -50,6 +49,8 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .button-tinder {
@@ -67,14 +68,14 @@ h1 {
   font-family: Balsamiq Sans;
 }
 
-.positive-color {
+.negative-color {
   background: linear-gradient(#ff7956, #fd267d);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.negative-color {
+.positive-color {
   background: linear-gradient(262deg, #64f0e0, #02df8b);
   background-clip: text;
   -webkit-background-clip: text;
