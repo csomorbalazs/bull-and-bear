@@ -16,7 +16,6 @@ import { MoneyCountingMiniGameComponent } from './components/mini-games/money-co
 import { MiniGameDirective } from './directives/mini-game.directive';
 import { CasinoMiniGameComponent } from './components/mini-games/casino-mini-game/casino-mini-game.component';
 import { FakeOrNotComponent } from './components/mini-games/fake-or-not/fake-or-not.component';
-import { RouletteComponent } from './mini-games/roulette/roulette.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +34,6 @@ import { RouletteComponent } from './mini-games/roulette/roulette.component';
     MiniGameDirective,
     CasinoMiniGameComponent,
     FakeOrNotComponent,
-    RouletteComponent,
   ],
   imports: [BrowserModule],
   providers: [],

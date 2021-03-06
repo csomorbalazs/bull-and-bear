@@ -1,6 +1,5 @@
-<timer [initialTimeInSeconds]="timeLimitInSeconds" (timeIsUp)="onMiniGameLost()"></timer>
-
 <div class="container minigame-container" *ngIf="miniGameState === MiniGameState.GAMEPLAY">
+  <timer [initialTimeInSeconds]="timeLimitInSeconds" (timeIsUp)="onMiniGameLost()"></timer>
   <div>
     <h1>Hamis vagy valódi?</h1>
   </div>
@@ -15,8 +14,11 @@
     </div>
   </div>
 </div>
-<mini-game-result *ngIf="
-    miniGameState === MiniGameState.WON || miniGameState === MiniGameState.LOST
-  " [result]="miniGameState" [reward]="reward" (resultsViewed)="miniGameState = MiniGameState.LESSON">
+<mini-game-result
+  *ngIf="miniGameState === MiniGameState.WON || miniGameState === MiniGameState.LOST"
+  [result]="miniGameState"
+  [reward]="reward"
+  (resultsViewed)="miniGameState = MiniGameState.LESSON"
+>
 </mini-game-result>
 <lesson-screen *ngIf="miniGameState == MiniGameState.LESSON" (lessonViewed)="finished.emit()"></lesson-screen>

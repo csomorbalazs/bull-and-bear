@@ -4,7 +4,18 @@
 
 * {
   user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
   touch-action: manipulation;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  font-family: Balsamiq Sans;
+  font-weight: bold;
+  font-size: 30px;
 }
 
 body,

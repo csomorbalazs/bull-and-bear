@@ -1,11 +1,5 @@
 import { FakeOrNotComponent } from './../mini-games/fake-or-not/fake-or-not.component';
-import {
-  Component,
-  ComponentFactoryResolver,
-  OnInit,
-  Type,
-  ViewChild,
-} from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, Type, ViewChild } from '@angular/core';
 import { MiniGameDirective } from 'src/app/directives/mini-game.directive';
 import { GameState } from 'src/app/models/GameState';
 import { InvestmentsService } from 'src/app/services/investments.service';
@@ -32,11 +26,7 @@ export class GameComponent implements OnInit {
 
   private currentMiniGameIndex: number;
 
-  miniGames: Type<any>[] = [
-    MoneyCountingMiniGameComponent,
-    CasinoMiniGameComponent,
-    FakeOrNotComponent,
-  ];
+  miniGames: Type<any>[] = [MoneyCountingMiniGameComponent, CasinoMiniGameComponent, FakeOrNotComponent];
 
   private miniGameIndices = getRandomIndices(this.miniGames.length);
 
@@ -44,7 +34,7 @@ export class GameComponent implements OnInit {
     private componentFactoryResolver: ComponentFactoryResolver,
     private playerInfoService: PlayerInfoService,
     private investmentsService: InvestmentsService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.playerInfoService.reset();
@@ -92,9 +82,7 @@ export class GameComponent implements OnInit {
     const viewContainerRef = this.miniGame.viewContainerRef;
     viewContainerRef.clear();
 
-    const componentRef = viewContainerRef.createComponent<MiniGame>(
-      componentFactory
-    );
+    const componentRef = viewContainerRef.createComponent<MiniGame>(componentFactory);
     componentRef.instance.finished.subscribe(() => this.onMiniGameFinished());
     componentRef.instance.timeLimitInSeconds = this.timeLimitInSeconds;
     componentRef.instance.reward = this.reward;
