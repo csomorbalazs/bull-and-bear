@@ -10,7 +10,8 @@ export class EndOfGameScreenComponent implements OnInit {
   private secondChanceInitialPrice: number = 50;
   @Input() secondChancePriceMultiplier: number;
   @Output() secondChance: EventEmitter<void> = new EventEmitter<void>();
-  secondChancePrice: number;
+  secondChancePrice: number = 0;
+  score = this.playerInfoService.getCurrentScore();
 
   constructor(private playerInfoService: PlayerInfoService) {}
 
@@ -19,9 +20,17 @@ export class EndOfGameScreenComponent implements OnInit {
       this.secondChanceInitialPrice * Number(this.secondChancePriceMultiplier);
   }
 
+  secondChanceAvailable(): boolean {
+    return this.score >= this.secondChancePrice;
+  }
+
+  private buyHealth() {
+    this.playerInfoService.decreaseScoreBy(this.secondChancePrice);
+    this.playerInfoService.increaseHealth();
+  }
+
   onSecondChanceClicked() {
-    let availableScore = this.playerInfoService.getCurrentScore();
-    if (availableScore - this.secondChancePrice >= 0) {
+    if (this.secondChanceAvailable()) {
       this.buyHealth();
       this.secondChancePrice =
         this.secondChanceInitialPrice *
@@ -30,11 +39,6 @@ export class EndOfGameScreenComponent implements OnInit {
     } else {
       console.log('not enough score');
     }
-  }
-
-  private buyHealth() {
-    this.playerInfoService.decreaseScoreBy(this.secondChancePrice);
-    this.playerInfoService.increaseHealth();
   }
 
   private update() {}

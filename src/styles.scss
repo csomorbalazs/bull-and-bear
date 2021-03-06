@@ -1,3 +1,73 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$bull-and-bear-primary: mat-palette($mat-indigo);
+$bull-and-bear-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$bull-and-bear-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$bull-and-bear-theme: mat-light-theme((
+  color: (
+    primary: $bull-and-bear-primary,
+    accent: $bull-and-bear-accent,
+    warn: $bull-and-bear-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($bull-and-bear-theme);
+
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$bull-and-bear-primary: mat-palette($mat-indigo);
+$bull-and-bear-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$bull-and-bear-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$bull-and-bear-theme: mat-light-theme((
+  color: (
+    primary: $bull-and-bear-primary,
+    accent: $bull-and-bear-accent,
+    warn: $bull-and-bear-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($bull-and-bear-theme);
+
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400&family=Chewy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap');
@@ -24,7 +94,9 @@ html {
 
 .red-button {
   margin-top: 30px;
-  width: 40%;
+  padding-left: 25px;
+  padding-right: 25px;
+  text-align: center;
   max-width: 139px;
   height: 44px;
   background: linear-gradient(0deg, #e54045 -5.9%, #f45f58 84.03%);
@@ -37,6 +109,11 @@ html {
   color: #ffffff;
   cursor: pointer;
   box-shadow: 0px 3px 0px #d01618;
+}
+
+.blue-button {
+  background: #2daeba;
+  box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.25);
 }
 
 .score-box {
@@ -62,3 +139,16 @@ html {
   color: #ffffff;
   text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.25);
 }
+
+.exit-button {
+  font-family: Chewy;
+  font-size: 22px;
+  line-height: 29px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  margin-top: 10px;
+  color: #8c8c8c;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
