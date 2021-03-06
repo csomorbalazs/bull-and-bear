@@ -33,27 +33,12 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
   onCoinClicked(coinValue: number) {
     let result = this.targetMoney - coinValue;
     if (result < 0) {
-      this.miniGameLost();
+      this.onMiniGameLost();
     } else if (result == 0) {
-      this.miniGameWon();
+      this.onMiniGameWon();
     } else {
       this.targetMoney -= coinValue;
     }
-  }
-
-  private miniGameLost() {
-    this.playerInfoService.decreaseCurrentHealth();
-    this.miniGameState = MiniGameState.LOST;
-  }
-
-  private miniGameWon() {
-    this.playerInfoService.increaseScoreBy(50);
-    this.miniGameState = MiniGameState.WON;
-  }
-
-  onMiniGameWon() {
-    this.playerInfoService.increaseScoreBy(50);
-    this.miniGameState = MiniGameState.WON;
   }
 
   onMiniGameLost() {
@@ -61,7 +46,8 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
     this.miniGameState = MiniGameState.LOST;
   }
 
-  onTimeIsUp() {
-    this.miniGameLost();
+  onMiniGameWon() {
+    this.playerInfoService.increaseScoreBy(50);
+    this.miniGameState = MiniGameState.WON;
   }
 }
