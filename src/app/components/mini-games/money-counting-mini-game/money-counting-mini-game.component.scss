@@ -1,23 +1,26 @@
-$fifty-coin: '/assets/money-counting/50_coin.svg';
-
 .container {
   height: 100%;
   background: linear-gradient(197.54deg, #27255b 0%, #49477d 100%);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
   .grid {
     display: flex;
+    min-width: 320px;
+    height: 550px;
+    flex-flow: column wrap;
+    align-items: center;
     justify-content: center;
-    .column {
-      display: flex;
-      width: 50%;
+    .child {
+      flex: 1 0 33%;
+    }
+    button {
+      border: 0;
       max-width: 200px;
-      flex-flow: column nowrap;
-      align-items: center;
-      justify-content: space-around;
-      button {
-        border: 0;
-        max-width: fit-content;
-        background: transparent;
-      }
+      background: transparent;
+    }
+    button:focus {
+      outline: 0;
     }
   }
 }
