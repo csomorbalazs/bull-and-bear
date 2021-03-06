@@ -15,6 +15,8 @@ import { EndOfGameScreenComponent } from './components/end-of-game-screen/end-of
 import { MoneyCountingMiniGameComponent } from './components/mini-games/money-counting-mini-game/money-counting-mini-game.component';
 import { MiniGameDirective } from './directives/mini-game.directive';
 import { CasinoMiniGameComponent } from './components/mini-games/casino-mini-game/casino-mini-game.component';
+import { FakeOrNotComponent } from './components/mini-games/fake-or-not/fake-or-not.component';
+import { RouletteComponent } from './mini-games/roulette/roulette.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +34,11 @@ import { CasinoMiniGameComponent } from './components/mini-games/casino-mini-gam
     MoneyCountingMiniGameComponent,
     MiniGameDirective,
     CasinoMiniGameComponent,
+    FakeOrNotComponent,
+    RouletteComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,38 @@
+<timer
+  [initialTimeInSeconds]="timeLimitInSeconds"
+  (timeIsUp)="onMiniGameLost()"
+></timer>
+
+<div
+  class="container minigame-container"
+  *ngIf="miniGameState === MiniGameState.GAMEPLAY"
+>
+  <div>
+    <h1>Hamis vagy valódi?</h1>
+  </div>
+  <img
+    class="main-image"
+    src="{{ selected.imgUrl }}"
+    alt="Hamis vagy valódi?"
+  />
+
+  <div class="buttons">
+    <div (click)="evaluateResult(false)" class="button-tinder">
+      <span class="negative-color"> Fake </span>
+    </div>
+    <div (click)="evaluateResult(true)" class="button-tinder">
+      <span class="positive-color"> Valódi </span>
+    </div>
+  </div>
+</div>
+<mini-game-result
+  *ngIf="
+    miniGameState === MiniGameState.WON || miniGameState === MiniGameState.LOST
+  "
+  [result]="miniGameState"
+  (resultsViewed)="miniGameState = MiniGameState.LESSON"
+></mini-game-result>
+<lesson-screen
+  *ngIf="miniGameState == MiniGameState.LESSON"
+  (lessonViewed)="finished.emit()"
+></lesson-screen>

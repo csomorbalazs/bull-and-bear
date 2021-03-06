@@ -1,3 +1,4 @@
+import { FakeOrNotComponent } from './../mini-games/fake-or-not/fake-or-not.component';
 import {
   Component,
   ComponentFactoryResolver,
@@ -32,6 +33,7 @@ export class GameComponent implements OnInit {
   miniGames: Type<any>[] = [
     MoneyCountingMiniGameComponent,
     CasinoMiniGameComponent,
+    FakeOrNotComponent,
   ];
 
   constructor(
