@@ -28,7 +28,7 @@ export class GameComponent implements OnInit {
 
   @ViewChild(MiniGameDirective, { static: true }) miniGame: MiniGameDirective;
 
-  private currentMiniGameIndex: number = 2;
+  private currentMiniGameIndex: number = 0;
 
   miniGames: Type<any>[] = [
     MoneyCountingMiniGameComponent,
