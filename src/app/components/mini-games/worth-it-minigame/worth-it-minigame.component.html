@@ -1,5 +1,5 @@
 <div class="container" *ngIf="miniGameState === MiniGameState.GAMEPLAY">
-  <timer [initialTimeInSeconds]="timeLimitInSeconds" (timeIsUp)="onTimesIsUp()"></timer>
+  <!-- <timer [initialTimeInSeconds]="timeLimitInSeconds" (timeIsUp)="onTimesIsUp()"></timer> -->
   <h1>Melyik éri meg jobban?</h1>
   <div class="grid">
     <button class="choice-1" (click)="onFirstApplesChosen()">
