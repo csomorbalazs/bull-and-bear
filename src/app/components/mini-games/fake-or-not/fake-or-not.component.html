@@ -14,11 +14,9 @@
     </div>
   </div>
 </div>
-<mini-game-result
-  *ngIf="miniGameState === MiniGameState.WON || miniGameState === MiniGameState.LOST"
-  [result]="miniGameState"
-  [reward]="reward"
-  (resultsViewed)="miniGameState = MiniGameState.LESSON"
->
+<mini-game-result *ngIf="miniGameState === MiniGameState.WON || miniGameState === MiniGameState.LOST"
+  [result]="miniGameState" [reward]="reward" (resultsViewed)="miniGameState = MiniGameState.LESSON">
 </mini-game-result>
-<lesson-screen *ngIf="miniGameState == MiniGameState.LESSON" (lessonViewed)="finished.emit()"></lesson-screen>
+
+<lesson-screen [text]="lessonText" [character]="Character.BULL" *ngIf="miniGameState == MiniGameState.LESSON"
+  (lessonViewed)="finished.emit()"></lesson-screen>

@@ -20,9 +20,10 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
   @Input() reward;
   @Output() finished = new EventEmitter<void>();
 
-  lessonText = "A gyors fejszámolás sokszor nem csak az iskolapadban, hanem az életben is jól jöhet. Mindig számold meg a visszajáró pénzt! 🧾";
+  lessonText =
+    'A gyors fejszámolás sokszor nem csak az iskolapadban, hanem az életben is jól jöhet. Mindig számold meg a visszajáró pénzt! 🧾';
 
-  constructor(private playerInfoService: PlayerInfoService) { }
+  constructor(private playerInfoService: PlayerInfoService) {}
 
   ngOnInit(): void {
     this.targetMoney = this.getRandomNumberEndingWithFiveOrZero();

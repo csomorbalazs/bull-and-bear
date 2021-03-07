@@ -23,6 +23,7 @@ import { WorthItMinigameComponent } from './components/mini-games/worth-it-minig
 import { RecyclingComponent } from './components/mini-games/recycling/recycling.component';
 import { DraggableDirective } from './directives/draggable.directive';
 import { DroppableDirective } from './directives/droppable.directive';
+import { MiningMinigameComponent } from './components/mini-games/mining-mini-game/mining-mini-game.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { DroppableDirective } from './directives/droppable.directive';
     RecyclingComponent,
     DraggableDirective,
     DroppableDirective,
+    MiningMinigameComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,4 +62,4 @@ import { DroppableDirective } from './directives/droppable.directive';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

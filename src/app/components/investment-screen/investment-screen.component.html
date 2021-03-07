@@ -1,5 +1,4 @@
-<lesson-screen *ngIf="investemnetScreenState == InvestmentScreenState.ONBOARDING"
-  text="Gratulálok, ügyesen megoldottad első feladatodat! A következő oldalon az összegyűjtött pénzedet tudod befektetni. Egyszerre mindig egy befektetésed lehet, ha az lejért, akkor indíthatod a következőt. Különböző hosszúságú befektetések vannak. Minél több ideig fektetsz be, annál többet fog kamatozni! Azonban vigyázz, ha elfogy minden életed, és nincs pénzed, nemtudsz új életet venni! Azt tanácsolom, mindig legyen nálad egy kis pénz, ne fektessd be egyszerre az összeset."
+<lesson-screen *ngIf="investemnetScreenState == InvestmentScreenState.ONBOARDING" [text]="onboardingText"
   [character]="Character.BULL" (lessonViewed)="investemnetScreenState = InvestmentScreenState.NEWINVESTMENT">
 </lesson-screen>
 
