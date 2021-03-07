@@ -17,6 +17,7 @@ import { CasinoMiniGameComponent } from './components/mini-games/casino-mini-gam
 import { FakeOrNotComponent } from './components/mini-games/fake-or-not/fake-or-not.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
+import { RunningInvestmentScreenComponent } from './running-investment-screen/running-investment-screen.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -36,6 +37,7 @@ import { RouterModule } from '@angular/router';
     MiniGameDirective,
     CasinoMiniGameComponent,
     FakeOrNotComponent,
+    RunningInvestmentScreenComponent,
   ],
   imports: [
     BrowserModule,

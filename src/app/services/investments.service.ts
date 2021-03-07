@@ -41,6 +41,10 @@ export class InvestmentsService {
     return this.investments.filter((i) => i.duration > 0)[0];
   }
 
+  isRunningInvestment(): boolean {
+    return this.investments.filter((i) => i.duration > 0).length > 0;
+  }
+
   addFinishedInvestmentsToPlayerScore() {
     this.getFinishedInvestments().forEach((i) => {
       this.playerInfoService.increaseScoreBy(i.amount * i.interest);

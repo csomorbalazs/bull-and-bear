@@ -1,5 +1,6 @@
 export enum GameState {
   MINIGAME,
   INVESTMENT,
+  RUNNINGINVESTMENT,
   ENDOFGAME,
 }
