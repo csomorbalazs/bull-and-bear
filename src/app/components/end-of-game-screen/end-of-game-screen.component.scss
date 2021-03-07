@@ -1,12 +1,7 @@
 .container {
   height: 100%;
   width: 100%;
-  background: linear-gradient(
-    197.54deg,
-    #fff95b 0%,
-    #ff930f 43.75%,
-    #ffa21a 100%
-  );
+  background: linear-gradient(197.54deg, #fff95b 0%, #ff930f 43.75%, #ffa21a 100%);
   position: absolute;
   z-index: 1;
   left: 0;
@@ -26,7 +21,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-self: center;
-  margin-top: 15%;
+  margin-top: 20%;
 }
 
 .title {
@@ -137,6 +132,9 @@
   align-self: center;
   width: 50%;
   z-index: 1;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+  transform: scale(1);
+  animation: pulse 2s infinite;
 }
 
 mat-spinner {
@@ -173,4 +171,18 @@ mat-spinner {
 button:focus {
   outline: none;
   box-shadow: none;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1.4);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.4);
+  }
 }
