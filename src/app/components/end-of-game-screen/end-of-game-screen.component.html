@@ -1,45 +1,46 @@
 <div class="container">
-  <div class="end-component">
-    <h1 class="title">Játék vége</h1>
-    <div class="result-view">
-      <div class="circle">
-        <img class="score-coin" src="assets/images/score-coin.svg" alt="Pénzérme" />
-        <h1 class="result">{{ score }}</h1>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="secondChanceAvailable(); else elseBlock" class="second-chance">
-    <div class="second-container">
-      <div class="second-card">
-        <h1 class="title">Második esély?</h1>
-        <div class="content">
-          <img class="revive-icon" src="assets/images/revive.svg" alt="revive" />
-          <mat-spinner [value]="progressValue" [mode]="progressMode"></mat-spinner>
-        </div>
-        <button (click)="onSecondChanceClicked()" class="red-button blue-button">
+  <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center">
+    <div class="end-component">
+      <h1 class="title">Játék vége</h1>
+      <div class="result-view">
+        <div class="circle">
           <img class="score-coin" src="assets/images/score-coin.svg" alt="Pénzérme" />
-          <h1 class="result">{{ secondChancePrice }}</h1>
-        </button>
+          <h1 class="result">{{ score }}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="second-chance">
+      <div class="second-container">
+        <div *ngIf="secondChanceAvailable(); else elseBlock" class="second-card">
+          <h1 class="title">Második esély?</h1>
+          <div class="content">
+            <img class="revive-icon" src="assets/images/revive.svg" alt="revive" />
+            <mat-spinner [value]="progressValue" [mode]="progressMode"></mat-spinner>
+          </div>
+          <button (click)="onSecondChanceClicked()" class="red-button blue-button">
+            <img class="score-coin" src="assets/images/score-coin.svg" alt="Pénzérme" />
+            <h1 class="result">{{ secondChancePrice }}</h1>
+          </button>
+        </div>
+        <ng-template #elseBlock>
+          <div class="second-card">
+            <div *ngIf="isHighscore" class="pyro">
+              <div class="before"></div>
+              <div class="after"></div>
+            </div>
+            <h1 *ngIf="isHighscore; else noHighscore" class="title">Gratulálok, új rekord!</h1>
+            <ng-template #noHighscore>
+              <h1 class="title">Korábbi rekord</h1>
+            </ng-template>
+            <div class="content">
+              <h1 class="new-record">{{ score }}</h1>
+            </div>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>
-  <ng-template #elseBlock>
-    <div class="second-container second-chance">
-      <div class="second-card">
-        <div *ngIf="isHighscore" class="pyro">
-          <div class="before"></div>
-          <div class="after"></div>
-        </div>
-        <h1 *ngIf="isHighscore; else noHighscore" class="title">Gratulálok, új rekord!</h1>
-        <ng-template #noHighscore>
-          <h1 class="title">Korábbi rekord</h1>
-        </ng-template>
-        <div class="content">
-          <h1 class="new-record">{{ score }}</h1>
-        </div>
-      </div>
-    </div>
-  </ng-template>
+
   <img class="characters" src="assets/images/start-screen.svg" alt="" />
   <button (click)="onRestartClicked()" class="replay-button blue-button red-button">ÚJ JÁTÉK</button>
 </div>
