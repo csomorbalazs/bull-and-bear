@@ -21,7 +21,7 @@ export class GameComponent implements OnInit {
   GameState = GameState;
   gameState: GameState = GameState.MINIGAME;
   secondChancePriceMultiplier: number = 1;
-  timeLimitMultiplier: number = 0.9;
+  timeLimitMultiplier: number = 0.95;
   timeLimitInSeconds: number = 15;
   reward: number = 50;
 
