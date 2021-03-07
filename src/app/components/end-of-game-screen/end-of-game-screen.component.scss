@@ -172,20 +172,6 @@ button:focus {
   box-shadow: none;
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1.4);
-  }
-
-  70% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(1.4);
-  }
-}
-
 .new-record {
   font-family: Chewy;
   font-size: 30px;

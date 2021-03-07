@@ -243,3 +243,17 @@ body {
   animation: shine 1000ms infinite;
   transform: translateX(250px) rotate(-25deg);
 }
+
+@keyframes pulse {
+  0% {
+    transform: scale(1.4);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.4);
+  }
+}

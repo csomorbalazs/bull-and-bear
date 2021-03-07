@@ -3,6 +3,7 @@ import { Apples } from 'src/app/models/Apples';
 import { Character } from 'src/app/models/Character';
 import { MiniGameState } from 'src/app/models/MiniGameState';
 import { PlayerInfoService } from 'src/app/services/player-info.service';
+import { getRandomIndices } from 'src/app/utils/randomizer';
 import { MiniGame } from '../mini-game';
 
 @Component({
@@ -74,10 +75,8 @@ export class WorthItMinigameComponent implements OnInit, MiniGame {
   }
 
   chooseApples() {
-    this.firstApplesChoice = this.apples[Math.floor(Math.random() * this.apples.length)];
-    this.secondApplesChoice = this.apples[Math.floor(Math.random() * this.apples.length)];
-    if (this.firstApplesChoice === this.secondApplesChoice) {
-      this.chooseApples();
-    }
+    let randomIndices = getRandomIndices(this.apples.length);
+    this.firstApplesChoice = this.apples[randomIndices[0]];
+    this.secondApplesChoice = this.apples[randomIndices[1]];
   }
 }

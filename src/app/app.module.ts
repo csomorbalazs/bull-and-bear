@@ -20,6 +20,9 @@ import { FormsModule } from '@angular/forms';
 import { RunningInvestmentScreenComponent } from './running-investment-screen/running-investment-screen.component';
 import { RouterModule } from '@angular/router';
 import { WorthItMinigameComponent } from './components/mini-games/worth-it-minigame/worth-it-minigame.component';
+import { RecyclingComponent } from './components/mini-games/recycling/recycling.component';
+import { DraggableDirective } from './directives/draggable.directive';
+import { DroppableDirective } from './directives/droppable.directive';
 import { MiningMinigameComponent } from './components/mini-games/mining-mini-game/mining-mini-game.component';
 
 @NgModule({
@@ -41,6 +44,9 @@ import { MiningMinigameComponent } from './components/mini-games/mining-mini-gam
     FakeOrNotComponent,
     RunningInvestmentScreenComponent,
     WorthItMinigameComponent,
+    RecyclingComponent,
+    DraggableDirective,
+    DroppableDirective,
     MiningMinigameComponent,
   ],
   imports: [
@@ -56,4 +62,4 @@ import { MiningMinigameComponent } from './components/mini-games/mining-mini-gam
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

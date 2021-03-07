@@ -1,0 +1,19 @@
+<div class="minigame-container container" *ngIf="miniGameState === MiniGameState.GAMEPLAY">
+  <timer [initialTimeInSeconds]="timeLimitInSeconds" (timeIsUp)="onMiniGameLost()"></timer>
+  <img class="sidewalk" src="assets/recycling/sidewalk.svg">
+  <div class="garbage-bins">
+    <img src="assets/recycling/paper-bin.svg" appDroppable (dropping)="onDrop($event, GarbageType.PAPER)">
+    <img src="assets/recycling/plastic-bin.svg" appDroppable (dropping)="onDrop($event, GarbageType.PLASTIC)">
+    <img src="assets/recycling/glass-bin.svg" appDroppable (dropping)="onDrop($event, GarbageType.GLASS)">
+  </div>
+  <div class="garbage">
+    <img *ngFor="let garbage of garbages" [class.hide]="garbage.cleared" [src]="garbage.imagePath" appDraggable
+      [model]="garbage">
+  </div>
+</div>
+<mini-game-result *ngIf="
+    miniGameState === MiniGameState.WON || miniGameState === MiniGameState.LOST
+  " [result]="miniGameState" [reward]="reward" (resultsViewed)="miniGameState = MiniGameState.LESSON">
+</mini-game-result>
+<lesson-screen *ngIf="miniGameState == MiniGameState.LESSON" [text]="lessonText" [character]="Character.BEAR"
+  (lessonViewed)="finished.emit()"></lesson-screen>

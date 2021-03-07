@@ -59,7 +59,7 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
       wonLessonText:
         'Ügyes vagy! 🎉 Ha egy oldal nem rendelkezik megfelelő tanúsítvánnyal 🔏, akkor nem szabad megbízni benne!',
       lostLessonText:
-        'Jaj! 😱 Az oldal nem rendelkeztt megfelelő tanúsítvánnyal! 🔏 Sose használj nem megbízható oldalakat!',
+        'Jaj! 😱 Az oldal nem rendelkezett megfelelő tanúsítvánnyal! 🔏 Sose használj nem megbízható oldalakat!',
     },
   ];
 
@@ -71,7 +71,7 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
 
   lessonText: string;
 
-  constructor(private playerInfoService: PlayerInfoService) {}
+  constructor(private playerInfoService: PlayerInfoService) { }
 
   onMiniGameWon(): void {
     this.playerInfoService.increaseScoreBy(this.reward);
@@ -82,7 +82,7 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
     this.miniGameState = MiniGameState.LOST;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   evaluateResult(clicked: boolean) {
     if (clicked === this.selected.isValid) {

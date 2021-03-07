@@ -10,6 +10,7 @@ import { MoneyCountingMiniGameComponent } from '../mini-games/money-counting-min
 import { getRandomIndices } from 'src/app/utils/randomizer';
 import { MiniGameMetaData } from 'src/app/models/MiniGameMetaData';
 import { WorthItMinigameComponent } from '../mini-games/worth-it-minigame/worth-it-minigame.component';
+import { RecyclingComponent } from '../mini-games/recycling/recycling.component';
 import { MiningMinigameComponent } from '../mini-games/mining-mini-game/mining-mini-game.component';
 
 @Component({
@@ -21,7 +22,7 @@ export class GameComponent implements OnInit {
   GameState = GameState;
   gameState: GameState = GameState.MINIGAME;
   secondChancePriceMultiplier: number = 1;
-  timeLimitMultiplier: number = 0.93;
+  timeLimitMultiplier: number = 0.9;
   timeLimitInSeconds: number = 15;
   reward: number = 50;
 
@@ -45,6 +46,10 @@ export class GameComponent implements OnInit {
     {
       miniGameType: WorthItMinigameComponent,
       minimumAge: 12,
+    },
+    {
+      miniGameType: RecyclingComponent,
+      minimumAge: 0,
     },
     {
       miniGameType: MiningMinigameComponent,
