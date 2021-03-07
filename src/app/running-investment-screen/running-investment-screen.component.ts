@@ -8,19 +8,17 @@ import { InvestmentsService } from '../services/investments.service';
 @Component({
   selector: 'running-investment-screen',
   templateUrl: './running-investment-screen.component.html',
-  styleUrls: ['./running-investment-screen.component.scss']
+  styleUrls: ['./running-investment-screen.component.scss'],
 })
 export class RunningInvestmentScreenComponent implements OnInit {
   Character = Character;
 
   remainingDuration = this.investmentService.getRunningInvestment().duration;
 
-  text: string = "Csak így tovább! A befektetésed "+this.remainingDuration+" kör múlva meghozza gyümölcsét!";
+  text: string = 'Csak így tovább! ✔️ A befektetésed ' + this.remainingDuration + ' kör múlva meghozza gyümölcsét!';
   @Input() character: Character;
   @Output() lessonViewed = new EventEmitter<void>();
-  constructor( private investmentService: InvestmentsService) { }
+  constructor(private investmentService: InvestmentsService) {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

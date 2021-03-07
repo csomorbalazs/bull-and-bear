@@ -32,8 +32,6 @@ export class InvestmentScreenComponent implements OnInit {
   constructor(private investmentService: InvestmentsService, private playerInfoService: PlayerInfoService) {}
 
   ngOnInit(): void {
-    this.investmentAmount = Math.round(this.playerInfoService.getCurrentScore() / 2 / 10) * 10;
-
     if (this.playerInfoService.isFirstInvestment()) {
       this.playerInfoService.setFirstInvestment();
       this.investemnetScreenState = InvestmentScreenState.ONBOARDING;
@@ -52,6 +50,8 @@ export class InvestmentScreenComponent implements OnInit {
     this.investmentOptions = this.investmentService.getInvestmentOptions();
     if (this.investmentService.isRunningInvestment)
       this.runningInvestment = this.investmentService.getRunningInvestment();
+
+    this.investmentAmount = Math.round(this.playerInfoService.getCurrentScore() / 2 / 10) * 10;
   }
 
   addInvestment(investmentOption: InvestmentOption) {
