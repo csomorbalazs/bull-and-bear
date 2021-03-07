@@ -16,6 +16,7 @@ export class EndOfGameScreenComponent implements OnInit {
   score = this.playerInfoService.getCurrentScore();
   progressValue = 100;
   progressMode: ProgressSpinnerMode = 'determinate';
+  isHighscore = false;
 
   constructor(private playerInfoService: PlayerInfoService, private router: Router) {}
 
@@ -28,6 +29,11 @@ export class EndOfGameScreenComponent implements OnInit {
         }
         this.secondChanceAvailable();
       }, 50);
+    }
+    const prevHighscore = this.playerInfoService.getHighscore();
+    if (prevHighscore === null || prevHighscore <= this.score) {
+      this.playerInfoService.setHighscore(this.score);
+      this.isHighscore = true;
     }
   }
 

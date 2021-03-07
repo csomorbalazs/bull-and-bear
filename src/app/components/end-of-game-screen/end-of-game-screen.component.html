@@ -8,7 +8,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="secondChanceAvailable()" class="second-chance">
+  <div *ngIf="false; else elseBlock" class="second-chance">
     <div class="second-container">
       <div class="second-card">
         <h1 class="title">Második esély?</h1>
@@ -23,6 +23,23 @@
       </div>
     </div>
   </div>
+  <ng-template #elseBlock>
+    <div class="second-container second-chance">
+      <div class="second-card">
+        <div *ngIf="isHighscore" class="pyro">
+          <div class="before"></div>
+          <div class="after"></div>
+        </div>
+        <h1 *ngIf="isHighscore; else noHighscore" class="title">Gratulálok, új rekord!</h1>
+        <ng-template #noHighscore>
+          <h1 class="title">Rekord</h1>
+        </ng-template>
+        <div class="content">
+          <h1 class="new-record">{{ score }}</h1>
+        </div>
+      </div>
+    </div>
+  </ng-template>
   <img class="characters" src="assets/images/start-screen.png" alt="" />
   <button (click)="onRestartClicked()" class="replay-button blue-button red-button">ÚJ JÁTÉK</button>
 </div>
