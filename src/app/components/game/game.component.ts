@@ -10,6 +10,7 @@ import { MoneyCountingMiniGameComponent } from '../mini-games/money-counting-min
 import { getRandomIndices } from 'src/app/utils/randomizer';
 import { MiniGameMetaData } from 'src/app/models/MiniGameMetaData';
 import { WorthItMinigameComponent } from '../mini-games/worth-it-minigame/worth-it-minigame.component';
+import { MiningMinigameComponent } from '../mini-games/mining-mini-game/mining-mini-game.component';
 
 @Component({
   selector: 'game',
@@ -44,6 +45,10 @@ export class GameComponent implements OnInit {
     {
       miniGameType: WorthItMinigameComponent,
       minimumAge: 12,
+    },
+    {
+      miniGameType: MiningMinigameComponent,
+      minimumAge: 0,
     },
   ];
 

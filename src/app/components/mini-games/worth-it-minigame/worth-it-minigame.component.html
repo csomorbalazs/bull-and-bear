@@ -1,5 +1,5 @@
 <div class="container" *ngIf="miniGameState === MiniGameState.GAMEPLAY">
-  <timer [initialTimeInSeconds]="timeLimitInSeconds" (timeIsUp)="onMiniGameLost()"></timer>
+  <timer [initialTimeInSeconds]="timeLimitInSeconds" (timeIsUp)="onTimesIsUp()"></timer>
   <h1>Melyik éri meg jobban?</h1>
   <div class="grid">
     <button class="choice-1" (click)="onFirstApplesChosen()">
@@ -32,7 +32,7 @@
 </mini-game-result>
 <lesson-screen
   *ngIf="miniGameState == MiniGameState.LESSON"
-  text="Ügyes vagy! 🎉 Lehet, hogy elsőre jobb ajánlatnak tűnt négy darab alma, viszont ha hatot veszel, darabonként olcsóbb. Azonban azt is mindig mérlegeld, hogy mennyire van szükséged!"
+  [text]="lessonText"
   [character]="Character.BULL"
   (lessonViewed)="finished.emit()"
 ></lesson-screen>
