@@ -65,6 +65,8 @@ export class EndOfGameScreenComponent implements OnInit {
 
   onSecondChanceClicked() {
     if (this.secondChanceAvailable()) {
+      clearInterval(this.audioIntervalId);
+      this.isHighscore = false;
       this.buyHealth();
       this.secondChancePrice = this.secondChanceInitialPrice * Number(this.secondChancePriceMultiplier);
       this.secondChance.emit();
