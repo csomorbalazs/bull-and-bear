@@ -1,0 +1,38 @@
+<div class="container" *ngIf="miniGameState === MiniGameState.GAMEPLAY">
+  <timer [initialTimeInSeconds]="timeLimitInSeconds" (timeIsUp)="onMiniGameLost()"></timer>
+  <h1>Melyik éri meg jobban?</h1>
+  <div class="grid">
+    <button class="choice-1" (click)="onFirstApplesChosen()">
+      <div class="btn-content">
+        <img src="{{ firstApplesChoice.url }}" />
+        <div class="price-tag-left">
+          <div class="price">{{ firstApplesChoice.price }} Ft</div>
+          <img src="/assets/worth-it/price_tag_left.svg" />
+        </div>
+      </div>
+    </button>
+    <button class="choice-2" (click)="onSecondApplesChosen()">
+      <div class="btn-content">
+        <img src="{{ secondApplesChoice.url }}" />
+        <div class="price-tag-right">
+          <div class="price">{{ secondApplesChoice.price }} Ft</div>
+          <img src="/assets/worth-it/price_tag_right.svg" />
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+
+<mini-game-result
+  *ngIf="miniGameState === MiniGameState.WON || miniGameState === MiniGameState.LOST"
+  [result]="miniGameState"
+  [reward]="reward"
+  (resultsViewed)="miniGameState = MiniGameState.LESSON"
+>
+</mini-game-result>
+<lesson-screen
+  *ngIf="miniGameState == MiniGameState.LESSON"
+  text="Ügyes vagy! 🎉 Lehet, hogy elsőre jobb ajánlatnak tűnt négy darab alma, viszont ha hatot veszel, darabonként olcsóbb. Azonban azt is mindig mérlegeld, hogy mennyire van szükséged!"
+  [character]="Character.BULL"
+  (lessonViewed)="finished.emit()"
+></lesson-screen>

@@ -9,6 +9,7 @@ import { MiniGame } from '../mini-games/mini-game';
 import { MoneyCountingMiniGameComponent } from '../mini-games/money-counting-mini-game/money-counting-mini-game.component';
 import { getRandomIndices } from 'src/app/utils/randomizer';
 import { MiniGameMetaData } from 'src/app/models/MiniGameMetaData';
+import { WorthItMinigameComponent } from '../mini-games/worth-it-minigame/worth-it-minigame.component';
 
 @Component({
   selector: 'game',
@@ -40,9 +41,13 @@ export class GameComponent implements OnInit {
       miniGameType: FakeOrNotComponent,
       minimumAge: 12,
     },
+    {
+      miniGameType: WorthItMinigameComponent,
+      minimumAge: 12,
+    },
   ];
 
-  private miniGameIndices: number[];
+  private miniGameIndices = getRandomIndices(this.miniGames.length);
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -69,8 +74,7 @@ export class GameComponent implements OnInit {
       this.gameState = GameState.INVESTMENT;
     } else if (this.investmentsService.isRunningInvestment()) {
       this.gameState = GameState.RUNNINGINVESTMENT;
-    }
-    else {
+    } else {
       this.loadRandomMiniGame();
     }
   }

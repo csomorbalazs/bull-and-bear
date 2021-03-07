@@ -19,6 +19,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 import { RunningInvestmentScreenComponent } from './running-investment-screen/running-investment-screen.component';
 import { RouterModule } from '@angular/router';
+import { WorthItMinigameComponent } from './components/mini-games/worth-it-minigame/worth-it-minigame.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { RouterModule } from '@angular/router';
     CasinoMiniGameComponent,
     FakeOrNotComponent,
     RunningInvestmentScreenComponent,
+    WorthItMinigameComponent,
   ],
   imports: [
     BrowserModule,

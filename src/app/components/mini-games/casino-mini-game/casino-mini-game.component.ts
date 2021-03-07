@@ -23,9 +23,9 @@ export class CasinoMiniGameComponent implements OnInit, MiniGame {
   @Input() reward: number;
   @Output() finished = new EventEmitter<void>();
 
-  constructor(private playerInfoService: PlayerInfoService) { }
+  constructor(private playerInfoService: PlayerInfoService) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onMiniGameLost() {
     this.lessonText = this.miniGameLostText;
@@ -35,7 +35,7 @@ export class CasinoMiniGameComponent implements OnInit, MiniGame {
 
   onMiniGameWon() {
     this.lessonText = this.miniGameWonText;
-    this.playerInfoService.increaseScoreBy(50);
+    this.playerInfoService.increaseScoreBy(this.reward);
     this.miniGameState = MiniGameState.WON;
   }
 }
