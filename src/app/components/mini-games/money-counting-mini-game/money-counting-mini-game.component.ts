@@ -20,9 +20,10 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
   @Input() reward;
   @Output() finished = new EventEmitter<void>();
 
-  lessonText = "A gyors fejszámolás sokszor nem csak az iskolapadban, hanem az életben is jól jöhet. Mindig számold meg a visszajáró pénzt! 🧾";
+  lessonText =
+    'A gyors fejszámolás sokszor nem csak az iskolapadban, hanem az életben is jól jöhet. Mindig számold meg a visszajáró pénzt! 🧾';
 
-  constructor(private playerInfoService: PlayerInfoService) { }
+  constructor(private playerInfoService: PlayerInfoService) {}
 
   ngOnInit(): void {
     this.targetMoney = this.getRandomNumberEndingWithFiveOrZero();
@@ -30,8 +31,8 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
 
   // generates number between 500 and 2000, ending with 5 or 0
   private getRandomNumberEndingWithFiveOrZero(): number {
-    let max = 400;
-    let min = 100;
+    let max = 210;
+    let min = 40;
     return (Math.floor(Math.random() * (max - min + 1)) + min) * 5;
   }
 
