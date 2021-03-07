@@ -15,7 +15,7 @@ export class MiningMinigameComponent implements OnInit, MiniGame {
   miniGameState: MiniGameState = MiniGameState.GAMEPLAY;
   @ViewChild('pickaxe') pickaxe: ElementRef;
 
-  clickTarget: number = 32;
+  clickTarget: number = 31;
   currentClicks: number = 0;
 
   currentMountainIndex: number;

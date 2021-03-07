@@ -20,6 +20,7 @@ export class EndOfGameScreenComponent implements OnInit {
   progressMode: ProgressSpinnerMode = 'determinate';
   isHighscore = false;
   audioIntervalId;
+  progressIntervalId;
 
   constructor(
     private playerInfoService: PlayerInfoService,
@@ -29,21 +30,18 @@ export class EndOfGameScreenComponent implements OnInit {
 
   ngOnInit(): void {
     this.secondChancePrice = this.secondChanceInitialPrice * Number(this.secondChancePriceMultiplier);
-    const prevHighscore = this.playerInfoService.getHighscore();
-    if (prevHighscore === null || prevHighscore <= this.score) {
-      this.playerInfoService.setHighscore(this.score);
-      this.isHighscore = true;
-    }
+
     if (this.secondChanceAvailable()) {
-      const id = setInterval(() => {
+      this.progressIntervalId = setInterval(() => {
         if (this.progressValue) {
           this.progressValue--;
         } else {
-          this.playFireworksIfHighscore();
-          clearInterval(id);
+          clearInterval(this.progressIntervalId);
+          this.refreshHighscore();
         }
       }, 50);
     } else {
+      this.refreshHighscore();
       this.playFireworksIfHighscore();
     }
   }
@@ -51,6 +49,15 @@ export class EndOfGameScreenComponent implements OnInit {
   playFireworksIfHighscore() {
     if (this.isHighscore) {
       this.audioIntervalId = setInterval(() => this.soundService.playAudio(AudioId.FIREWORKS), 2000);
+    }
+  }
+
+  refreshHighscore() {
+    const prevHighscore = this.playerInfoService.getHighscore();
+    if (prevHighscore === null || prevHighscore <= this.score) {
+      this.playerInfoService.setHighscore(this.score);
+      this.isHighscore = true;
+      this.playFireworksIfHighscore();
     }
   }
 
@@ -65,6 +72,9 @@ export class EndOfGameScreenComponent implements OnInit {
 
   onSecondChanceClicked() {
     if (this.secondChanceAvailable()) {
+      clearInterval(this.audioIntervalId);
+      clearInterval(this.progressIntervalId);
+
       this.buyHealth();
       this.secondChancePrice = this.secondChanceInitialPrice * Number(this.secondChancePriceMultiplier);
       this.secondChance.emit();
@@ -75,6 +85,7 @@ export class EndOfGameScreenComponent implements OnInit {
 
   onRestartClicked() {
     clearInterval(this.audioIntervalId);
+    clearInterval(this.progressIntervalId);
     this.router.navigateByUrl('/start');
   }
 

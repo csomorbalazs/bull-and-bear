@@ -14,78 +14,77 @@
       outline: 0;
     }
     button.choice-1 {
-      flex: 1 0 50%;
-      max-width: 300px;
+      width: 300px;
       background: #dd9d71;
-      padding: 10px 20px 20px 20px;
       box-shadow: inset -4px -4px 0px rgba(0, 0, 0, 0.25);
       border-radius: 13px;
       transform: translateX(-5%);
     }
     button.choice-2 {
       flex: 1 0 50%;
-      max-width: 300px;
+      width: 300px;
       background: #a67655;
       padding: 10px 20px 20px 0px;
-      box-shadow: inset -4px -4px 0px rgba(0, 0, 0, 0.25);
+      box-shadow: inset -4px -4px 0px rgba(85, 71, 71, 0.25);
       border-radius: 13px;
       transform: translateX(5%);
     }
     .btn-content {
-      display: flex;
-      flex-flow: column nowrap;
       height: 100%;
+      display: flex;
+      flex-direction: column;
       img.apples {
         flex: 1 3.5 30%;
         // max-width: 100%;
         // height: auto;
       }
       .price-tag-right {
-        position: relative;
-        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-self: end;
+        align-self: end;
         transform: translateX(-6%);
+
         .price {
           color: #ffffff;
           font-size: 7vw;
           font-family: Balsamiq Sans;
           z-index: 9999;
-          bottom: 2vw;
-          padding-left: 1vw;
-          left: 0;
-          position: absolute;
           width: 100%;
+          position: relative;
+          top: 40px;
+          left: 0;
         }
         img {
-          position: absolute;
           height: auto;
           width: 100%;
           transform: scale(1.2, 1.2);
+          position: relative;
+          top: 0;
           left: 0;
-          bottom: 0;
         }
       }
       .price-tag-left {
+        transform: translateX(-6%);
         position: relative;
-        height: 100%;
-        transform: translateX(12%);
+        bottom: 15px;
         .price {
           color: #ffffff;
           font-size: 7vw;
           font-family: Balsamiq Sans;
           z-index: 9999;
-          bottom: 2vw;
-          padding-right: 2vw;
-          left: 0;
-          position: absolute;
           width: 100%;
+          position: relative;
+          top: 40px;
+          left: 30px;
         }
         img {
-          position: absolute;
           height: auto;
           width: 100%;
-          transform: scale(1.35, 1.35);
-          left: 2px;
-          bottom: 3px;
+          transform: scale(1.2, 1.2);
+          position: relative;
+          top: 0;
+          left: 30px;
         }
       }
     }

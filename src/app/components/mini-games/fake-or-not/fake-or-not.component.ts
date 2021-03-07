@@ -71,7 +71,7 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
 
   lessonText: string;
 
-  constructor(private playerInfoService: PlayerInfoService) { }
+  constructor(private playerInfoService: PlayerInfoService) {}
 
   onMiniGameWon(): void {
     this.playerInfoService.increaseScoreBy(this.reward);
@@ -80,9 +80,10 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
   onMiniGameLost(): void {
     this.playerInfoService.decreaseCurrentHealth();
     this.miniGameState = MiniGameState.LOST;
+    this.lessonText = 'Jaj! 😱 Lejárt az időd, legközelebb válassz gyorsabban!';
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   evaluateResult(clicked: boolean) {
     if (clicked === this.selected.isValid) {

@@ -139,6 +139,11 @@ h1 {
   box-shadow: 0px 3px 0px #d01618;
 }
 
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .blue-button {
   @extend .default-button;
   background: #2daeba;

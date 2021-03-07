@@ -6,7 +6,7 @@ import { PlayerInfo } from '../models/PlayerInfo';
   providedIn: 'root',
 })
 export class PlayerInfoService {
-  private playerInfo: PlayerInfo = new PlayerInfo(3, 0);
+  private playerInfo: PlayerInfo = new PlayerInfo(3, 0, 0);
   playerInfoMessage = new BehaviorSubject(this.playerInfo);
 
   constructor() {}
@@ -32,6 +32,14 @@ export class PlayerInfoService {
     }
     this.playerInfo.currentScore -= value;
     this.playerInfoMessage.next(this.playerInfo);
+  }
+
+  increaseGameCount() {
+    this.playerInfo.gameCount++;
+  }
+
+  getGameCount() {
+    return this.playerInfo.gameCount;
   }
 
   getCurrentHealth() {

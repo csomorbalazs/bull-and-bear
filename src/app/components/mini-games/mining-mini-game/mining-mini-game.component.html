@@ -1,6 +1,6 @@
 <div class="container" *ngIf="miniGameState === MiniGameState.GAMEPLAY">
   <timer [initialTimeInSeconds]="timeLimitInSeconds" (timeIsUp)="onMiniGameLost()"></timer>
-  <h1>Bányássz!</h1>
+  <h1>Bányássz Bitcoint!</h1>
   <div (click)="onClick()">
     <div>
       <img [ngClass]="{ rotate: currentClicks % 2 === 1 }" class="pickaxe" src="assets/mining/pickaxe.svg" />
@@ -22,7 +22,7 @@
 </mini-game-result>
 <lesson-screen
   *ngIf="miniGameState == MiniGameState.LESSON"
-  text="💡 A játékban egy népszerű kriptovalutának, azaz digitális pénznek a logóját láthattad. Talán már hallottál is róla, a neve Bitcoin."
+  text='💡 A Bitcoin egy kriptovaluta, azaz digitális pénz. Sok helyen még fizetni is tudsz vele! Persze a valóságban a Bitcoin "bányászat" nem így néz ki 😂, hanem számítógépek végeznek bonyolult műveleteket.'
   [character]="Character.BULL"
   (lessonViewed)="finished.emit()"
 ></lesson-screen>
