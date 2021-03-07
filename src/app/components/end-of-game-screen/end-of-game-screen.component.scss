@@ -1,12 +1,7 @@
 .container {
   height: 100%;
   width: 100%;
-  background: linear-gradient(
-    197.54deg,
-    #fff95b 0%,
-    #ff930f 43.75%,
-    #ffa21a 100%
-  );
+  background: linear-gradient(197.54deg, #fff95b 0%, #ff930f 43.75%, #ffa21a 100%);
   position: absolute;
   z-index: 1;
   left: 0;
@@ -26,7 +21,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-self: center;
-  margin-top: 15%;
+  margin-top: 20%;
 }
 
 .title {
