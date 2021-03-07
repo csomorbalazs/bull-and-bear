@@ -31,8 +31,8 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
 
   // generates number between 500 and 2000, ending with 5 or 0
   private getRandomNumberEndingWithFiveOrZero(): number {
-    let max = 210;
-    let min = 40;
+    let max = 400;
+    let min = 100;
     return (Math.floor(Math.random() * (max - min + 1)) + min) * 5;
   }
 

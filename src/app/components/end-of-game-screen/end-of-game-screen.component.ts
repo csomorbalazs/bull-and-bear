@@ -1,3 +1,5 @@
+import { AudioId } from 'src/app/models/AudioId';
+import { SoundService } from './../../services/sound.service';
 import { Router } from '@angular/router';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PlayerInfoService } from 'src/app/services/player-info.service';
@@ -17,23 +19,38 @@ export class EndOfGameScreenComponent implements OnInit {
   progressValue = 100;
   progressMode: ProgressSpinnerMode = 'determinate';
   isHighscore = false;
+  audioIntervalId;
 
-  constructor(private playerInfoService: PlayerInfoService, private router: Router) {}
+  constructor(
+    private playerInfoService: PlayerInfoService,
+    private router: Router,
+    private soundService: SoundService
+  ) {}
 
   ngOnInit(): void {
     this.secondChancePrice = this.secondChanceInitialPrice * Number(this.secondChancePriceMultiplier);
-    if (true) {
-      setInterval(() => {
-        if (this.progressValue) {
-          this.progressValue--;
-        }
-        this.secondChanceAvailable();
-      }, 50);
-    }
     const prevHighscore = this.playerInfoService.getHighscore();
     if (prevHighscore === null || prevHighscore <= this.score) {
       this.playerInfoService.setHighscore(this.score);
       this.isHighscore = true;
+    }
+    if (this.secondChanceAvailable()) {
+      const id = setInterval(() => {
+        if (this.progressValue) {
+          this.progressValue--;
+        } else {
+          this.playFireworksIfHighscore();
+          clearInterval(id);
+        }
+      }, 50);
+    } else {
+      this.playFireworksIfHighscore();
+    }
+  }
+
+  playFireworksIfHighscore() {
+    if (this.isHighscore) {
+      this.audioIntervalId = setInterval(() => this.soundService.playAudio(AudioId.FIREWORKS), 2000);
     }
   }
 
@@ -57,6 +74,7 @@ export class EndOfGameScreenComponent implements OnInit {
   }
 
   onRestartClicked() {
+    clearInterval(this.audioIntervalId);
     this.router.navigateByUrl('/start');
   }
 

@@ -1,0 +1,8 @@
+export enum AudioId {
+  LOST,
+  COIN_TOUCH,
+  MINIGAME_WON,
+  LONG,
+  INVESTMENT_REWARD,
+  FIREWORKS,
+}

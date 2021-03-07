@@ -1,10 +1,12 @@
+import { SoundService } from './../../services/sound.service';
 import { PlayerInfoService } from 'src/app/services/player-info.service';
 import { Investment } from './../../models/Investment';
 import { InvestmentsService } from 'src/app/services/investments.service';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { InvestmentOption } from 'src/app/models/InvestementOption';
 import { InvestmentScreenState } from 'src/app/models/InvestementScreenState';
 import { Character } from 'src/app/models/Character';
+import { AudioId } from 'src/app/models/AudioId';
 
 @Component({
   selector: 'investment-screen',
@@ -31,7 +33,11 @@ export class InvestmentScreenComponent implements OnInit {
     'Azonban vigyázz 😱, ha elfogy minden életed, és nincs pénzed, nem tudsz új életet venni! Azt tanácsolom, mindig legyen nálad egy kis pénz, ne fektesd be egyszerre az összeset.',
   ];
 
-  constructor(private investmentService: InvestmentsService, private playerInfoService: PlayerInfoService) {}
+  constructor(
+    private investmentService: InvestmentsService,
+    private playerInfoService: PlayerInfoService,
+    private soundService: SoundService
+  ) {}
 
   ngOnInit(): void {
     if (this.playerInfoService.isFirstInvestment()) {
@@ -39,9 +45,12 @@ export class InvestmentScreenComponent implements OnInit {
       this.investemnetScreenState = InvestmentScreenState.ONBOARDING;
     } else if (this.investmentService.isFinishedInvestment()) {
       this.investemnetScreenState = InvestmentScreenState.FINISHEDINVESTMENT;
+      this.soundService.playAudio(AudioId.INVESTMENT_REWARD);
+
       setTimeout(() => {
         this.investemnetScreenState = InvestmentScreenState.NEWINVESTMENT;
       }, 5000);
+
       var lastFinishedInvestment = this.investmentService.getFinishedInvestment();
       this.lastInvestmentReward = lastFinishedInvestment.amount * lastFinishedInvestment.interest;
     } else {
