@@ -26,7 +26,7 @@ export class InvestmentScreenComponent implements OnInit {
   onboardingText = [
     'Gratulálok 🤩, ügyesen megoldottad első feladatodat! A következő oldalon az összegyűjtött pénzedet tudod befektetni. Egyszerre mindig egy befektetésed lehet, ha az lejárt, akkor indíthatod a következőt.',
     'Különböző hosszúságú befektetések vannak. Minél több ideig fektetsz be, annál többet fog kamatozni! 💸',
-    'Azonban vigyázz 😱, ha elfogy minden életed, és nincs pénzed, nem tudsz új életet venni! Azt tanácsolom, mindig legyen nálad egy kis pénz, ne fektessd be egyszerre az összeset.',
+    'Azonban vigyázz 😱, ha elfogy minden életed, és nincs pénzed, nem tudsz új életet venni! Azt tanácsolom, mindig legyen nálad egy kis pénz, ne fektesd be egyszerre az összeset.',
   ];
 
   constructor(private investmentService: InvestmentsService, private playerInfoService: PlayerInfoService) {}
