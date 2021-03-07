@@ -32,6 +32,11 @@
       box-sizing: border-box;
       max-width: 200px;
       background: transparent;
+      transition: 0.05s ease-out;
+    }
+
+    button:active {
+      transform: scale(0.9);
     }
 
     button:focus {
