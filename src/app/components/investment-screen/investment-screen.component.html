@@ -1,4 +1,10 @@
-<div *ngIf="isFinishedInvestment" class="container minigame-container reward-container">
+<lesson-screen *ngIf="investemnetScreenState == InvestmentScreenState.ONBOARDING"
+  text="Gratulálok, ügyesen megoldottad első feladatodat! A következő oldalon az összegyűjtött pénzedet tudod befektetni. Egyszerre mindig egy befektetésed lehet, ha az lejért, akkor indíthatod a következőt. Különböző hosszúságú befektetések vannak. Minél több ideig fektetsz be, annál többet fog kamatozni! Azonban vigyázz, ha elfogy minden életed, és nincs pénzed, nemtudsz új életet venni! Azt tanácsolom, mindig legyen nálad egy kis pénz, ne fektessd be egyszerre az összeset."
+  [character]="Character.BULL" (lessonViewed)="investemnetScreenState = InvestmentScreenState.NEWINVESTMENT">
+</lesson-screen>
+
+<div *ngIf="investemnetScreenState == InvestmentScreenState.FINISHEDINVESTMENT"
+  class="container minigame-container reward-container">
   <h1>Befektetett pénzed kamatozott! </h1><br>
   <div class="investment-reward">
     <img src="assets/images/tick.svg">
@@ -7,10 +13,10 @@
       <img src="assets/images/score-coin.svg">
     </div>
   </div>
+  <button class="next-button red-button" (click)="onboardingViewed()">Tovább</button>
 </div>
 
-
-<div *ngIf="!isFinishedInvestment" class="container minigame-container">
+<div *ngIf="investemnetScreenState == InvestmentScreenState.NEWINVESTMENT" class="container minigame-container">
   <h1>Új befektetés </h1>
   <div class="set-invest-amount">
     <button class="minus" (click)="handleMinus()">-</button>
