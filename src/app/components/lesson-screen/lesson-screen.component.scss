@@ -7,6 +7,7 @@
 .lesson-text {
   background-color: white;
   margin: 24px;
+  margin-bottom: 14px;
   padding: 14px;
   border-radius: 13px;
   font-size: 18px;
@@ -22,4 +23,8 @@ img.character-talking {
   margin: 0 auto;
   object-fit: contain;
   text-align: center;
+}
+
+img.bull-talking {
+  max-height: 55% !important;
 }
