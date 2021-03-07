@@ -1,6 +1,8 @@
+import { SoundService } from './../../services/sound.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PlayerInfoService } from 'src/app/services/player-info.service';
 import { Router } from '@angular/router';
+import { AudioId } from 'src/app/models/AudioId';
 
 @Component({
   selector: 'start-screen',
@@ -14,13 +16,18 @@ export class StartScreenComponent implements OnInit {
   age: number;
   ageInvalid = false;
 
-  constructor(public playerInfoService: PlayerInfoService, private router: Router) {}
+  constructor(
+    public playerInfoService: PlayerInfoService,
+    private router: Router,
+    private soundService: SoundService
+  ) {}
 
   ngOnInit(): void {
     this.ageAlreadyProvided = this.playerInfoService.getAge() !== null;
   }
 
   onStartClicked(): void {
+    this.soundService.playInfinite(AudioId.LONG);
     if (!this.ageAlreadyProvided) {
       this.showAgeInputScreen = true;
     } else {
