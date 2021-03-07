@@ -80,7 +80,7 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
   onMiniGameLost(): void {
     this.playerInfoService.decreaseCurrentHealth();
     this.miniGameState = MiniGameState.LOST;
-    this.lessonText = 'Jaj! 😱 Lejárt az időd, legközelebb válassz gyorsabban!';
+    if (this.lessonText == null) this.lessonText = 'Jaj! 😱 Lejárt az időd, legközelebb válassz gyorsabban!';
   }
 
   ngOnInit(): void {}
