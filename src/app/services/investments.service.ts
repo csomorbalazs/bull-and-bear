@@ -9,9 +9,9 @@ import { InvestmentOption } from '../models/InvestementOption';
 export class InvestmentsService {
   private investments: Investment[] = [];
   private investmentOptions: InvestmentOption[] = [
-    new InvestmentOption(1, 1.5),
-    new InvestmentOption(3, 2),
-    new InvestmentOption(7, 3),
+    new InvestmentOption(3, 1.5),
+    new InvestmentOption(5, 4),
+    new InvestmentOption(10, 14),
   ];
 
   constructor(private playerInfoService: PlayerInfoService) {}

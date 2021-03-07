@@ -9,7 +9,7 @@ export class PlayerInfoService {
   private playerInfo: PlayerInfo = new PlayerInfo(3, 0);
   playerInfoMessage = new BehaviorSubject(this.playerInfo);
 
-  constructor() { }
+  constructor() {}
 
   getCurrentScore() {
     return this.playerInfo.currentScore;
@@ -82,5 +82,13 @@ export class PlayerInfoService {
 
   setAge(value: number) {
     localStorage.setItem('age', value.toString());
+  }
+
+  isFirstInvestment(): boolean {
+    return localStorage.getItem('firstInvestment') == null;
+  }
+
+  setFirstInvestment() {
+    localStorage.setItem('firstInvestment', 'false');
   }
 }
