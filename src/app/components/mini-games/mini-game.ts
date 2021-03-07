@@ -1,4 +1,5 @@
 import { EventEmitter } from '@angular/core';
+import { MiniGameState } from 'src/app/models/MiniGameState';
 
 export interface MiniGame {
   onMiniGameWon(): void;
@@ -6,4 +7,5 @@ export interface MiniGame {
   finished: EventEmitter<void>;
   timeLimitInSeconds: number;
   reward: number;
+  miniGameState: MiniGameState;
 }

@@ -25,17 +25,17 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
       imgUrl: 'assets/fake-or-not/sms_spam_01.png',
       isValid: false,
       wonLessonText:
-        'Gratulálok! 🎉 Ügyesen észrevetted, hogy az sms egy ismeretlen, külfödi telefonszámról érkezett, és egy gyanús ☠️ webcímet tartalmaz. ',
+        'Gratulálok! 🎉 Ügyesen észrevetted, hogy az sms egy ismeretlen, külföldi telefonszámról érkezett, és egy gyanús ☠️ webcímet tartalmaz. ',
       lostLessonText:
-        'Hoppá! 😱 Az sms egy ismeretlen, külfödi telefonszámról érkezett, és egy gyanús ☠️ webcímet tartalmazott. Minidg kerüld el a gyanús webcímeket és feladókat!',
+        'Hoppá! 😱 Az sms egy ismeretlen, külföldi telefonszámról érkezett, és egy gyanús ☠️ webcímet tartalmazott. Minidg kerüld el a gyanús webcímeket és feladókat!',
     },
     {
       imgUrl: 'assets/fake-or-not/mav.jpg',
       isValid: true,
       wonLessonText:
-        'Gratulálok! 🎉 Ügyesen észrevetted, hogy a online fizetőoldal megbízható. 👌 Mindig ügyelj, hol adod meg bankkártya adataid!',
+        'Gratulálok! 🎉 Ügyesen észrevetted, hogy az online fizetőoldal megbízható. 👌 Mindig ügyelj, hol adod meg a bankkártya adataid!',
       lostLessonText:
-        'Hoppá! 😱 Az online fizetőoldal megbízható volt! Egy kis lakat 🔒 jelzi álatalában a weboldalak címe mellett, ha a weboldal megbízható.',
+        'Hoppá! 😱 Az online fizetőoldal megbízható volt! Egy kis lakat 🔒 jelzi általában a weboldalak címe mellett, ha a weboldal megbízható.',
     },
     {
       imgUrl: 'assets/fake-or-not/fake-email.jpg',
@@ -49,9 +49,9 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
       imgUrl: 'assets/fake-or-not/mnb.jpg',
       isValid: true,
       wonLessonText:
-        'Ügyes vagy! 🎉 Felismerted, hogy az oldal megbízhtó! Egy kis lakat 🔒 jelzi álatalában a weboldalak címe mellett, ha a weboldal megbízható.',
+        'Ügyes vagy! 🎉 Felismerted, hogy az oldal megbízható! Egy kis lakat 🔒 jelzi általában a weboldalak címe mellett, ha a weboldal megbízható.',
       lostLessonText:
-        'Jaj! 😱 Az oldal megbízhtó volt. Egy kis lakat 🔒 jelzi álatalában a weboldalak címe mellett, ha a weboldal megbízható.',
+        'Jaj! 😱 Az oldal megbízható volt. Egy kis lakat 🔒 jelzi általában a weboldalak címe mellett, ha a weboldal megbízható.',
     },
     {
       imgUrl: 'assets/fake-or-not/no-https.jpg',
@@ -59,7 +59,7 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
       wonLessonText:
         'Ügyes vagy! 🎉 Ha egy oldal nem rendelkezik megfelelő tanúsítvánnyal 🔏, akkor nem szabad megbízni benne!',
       lostLessonText:
-        'Jaj! 😱 Az oldal nem rendelkeztt megfelelő tanúsítvánnyal! 🔏 Sose használj nem megbízható oldalakat!',
+        'Jaj! 😱 Az oldal nem rendelkezett megfelelő tanúsítvánnyal! 🔏 Sose használj nem megbízható oldalakat!',
     },
   ];
 
@@ -71,7 +71,7 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
 
   lessonText: string;
 
-  constructor(private playerInfoService: PlayerInfoService) {}
+  constructor(private playerInfoService: PlayerInfoService) { }
 
   onMiniGameWon(): void {
     this.playerInfoService.increaseScoreBy(this.reward);
@@ -82,7 +82,7 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
     this.miniGameState = MiniGameState.LOST;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   evaluateResult(clicked: boolean) {
     if (clicked === this.selected.isValid) {
