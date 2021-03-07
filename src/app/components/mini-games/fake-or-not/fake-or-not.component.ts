@@ -19,6 +19,9 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
   availableTests: FakeTest[] = [
     { imgUrl: 'assets/fake-or-not/sms_spam_01.png', isValid: false },
     { imgUrl: 'assets/fake-or-not/otp.png', isValid: true },
+    { imgUrl: 'assets/fake-or-not/fake-email.jpg', isValid: false },
+    { imgUrl: 'assets/fake-or-not/mnb.jpg', isValid: true },
+    { imgUrl: 'assets/fake-or-not/no-https.jpg', isValid: false },
   ];
 
   selected = this.availableTests[this.getRandomIndex()];
