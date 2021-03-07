@@ -1,0 +1,28 @@
+<div class="container" *ngIf="miniGameState === MiniGameState.GAMEPLAY">
+  <!-- <timer [initialTimeInSeconds]="timeLimitInSeconds" (timeIsUp)="onMiniGameLost()"></timer> -->
+  <h1>Bányássz!</h1>
+  <div (click)="onClick()">
+    <div>
+      <img [ngClass]="{ rotate: currentClicks % 2 === 1 }" class="pickaxe" src="assets/mining/pickaxe.png" />
+      <ng-container *ngFor="let i of [].constructor(20)">
+        <div [ngClass]="{ particle: currentClicks % 2 === 1 }"></div>
+      </ng-container>
+    </div>
+    <img class="bitcoin" src="assets/mining/bitcoin.png" />
+    <img class="mountain" [src]="mountainUrls[currentMountainIndex]" />
+  </div>
+</div>
+
+<mini-game-result
+  *ngIf="miniGameState === MiniGameState.WON || miniGameState === MiniGameState.LOST"
+  [result]="miniGameState"
+  [reward]="reward"
+  (resultsViewed)="miniGameState = MiniGameState.LESSON"
+>
+</mini-game-result>
+<lesson-screen
+  *ngIf="miniGameState == MiniGameState.LESSON"
+  text="💡 A játékban egy népszerű kriptovalutának, azaz digitális pénznek a logóját láthattad. Talán már hallottál is róla, a neve Bitcoin."
+  [character]="Character.BULL"
+  (lessonViewed)="finished.emit()"
+></lesson-screen>
