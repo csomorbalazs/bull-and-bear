@@ -22,9 +22,7 @@ export class InvestmentsService {
 
   invest(investment: Investment): void {
     this.investments.push(new Investment(investment.amount, investment.duration, investment.interest));
-
     this.playerInfoService.decreaseScoreBy(investment.amount);
-    console.log(this.investments);
   }
 
   miniGameElapsed() {
@@ -45,11 +43,18 @@ export class InvestmentsService {
     return this.investments.filter((i) => i.duration > 0).length > 0;
   }
 
+  isFinishedInvestment(): boolean {
+    return this.getFinishedInvestments().length > 0;
+  }
+
+  getFinishedInvestment(): Investment {
+    return this.getFinishedInvestments()[0];
+  }
+
   addFinishedInvestmentsToPlayerScore() {
     this.getFinishedInvestments().forEach((i) => {
       this.playerInfoService.increaseScoreBy(i.amount * i.interest);
     });
-
     this.investments = this.investments.filter((i) => i.duration > 0);
   }
 }
