@@ -1,0 +1,15 @@
+<div class="minigame-container container">
+  <img (click)="goBack()" class="back-arrow" src="assets/images/left-arrow.svg" alt="">
+  <h1>Kitüntetések</h1>
+
+  <div class="achievement-type">
+    <h2>Rekorder</h2>
+    <h3>Gyűjts össze minél több pontot!</h3>
+  </div>
+  <div class="achievements">
+    <div class="achievement" *ngFor="let achievement of achievements">
+      <img [src]="achievement.getEarned() ? achievement.imagePath: 'assets/achievements/question-mark.svg'">
+      <div>{{achievement.text}}</div>
+    </div>
+  </div>
+</div>

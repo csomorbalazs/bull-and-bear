@@ -1,0 +1,53 @@
+.container {
+  height: 100%;
+  background: linear-gradient(197.54deg, #6fcf97 0%, #219653 100%);
+
+  color: white;
+  font-family: Balsamiq Sans;
+}
+
+.back-arrow {
+  pointer-events: initial;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  margin: 10px 15px;
+  filter: drop-shadow(0px 4px 0px rgba(0, 0, 0, 0.25));
+}
+
+.achievement-type {
+  margin: 20px;
+
+  h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: normal;
+  }
+}
+
+.achievements {
+  margin: 0 auto;
+
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.achievement {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+
+  img {
+    width: 20vw;
+    min-width: 80px;
+    filter: drop-shadow(0px 4px 0px rgba(0, 0, 0, 0.25));
+  }
+}

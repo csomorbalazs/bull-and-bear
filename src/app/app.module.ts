@@ -24,6 +24,8 @@ import { RecyclingComponent } from './components/mini-games/recycling/recycling.
 import { DraggableDirective } from './directives/draggable.directive';
 import { DroppableDirective } from './directives/droppable.directive';
 import { MiningMinigameComponent } from './components/mini-games/mining-mini-game/mining-mini-game.component';
+import { AchievementsComponent } from './components/achievements/achievements.component';
+import { AchievementEarnedComponent } from './components/achievement-earned/achievement-earned.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { MiningMinigameComponent } from './components/mini-games/mining-mini-gam
     DraggableDirective,
     DroppableDirective,
     MiningMinigameComponent,
+    AchievementsComponent,
+    AchievementEarnedComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +60,7 @@ import { MiningMinigameComponent } from './components/mini-games/mining-mini-gam
     RouterModule.forRoot([
       { path: 'start', component: StartScreenComponent },
       { path: 'game', component: GameComponent },
+      { path: 'achievements', component: AchievementsComponent },
       { path: '', redirectTo: '/start', pathMatch: 'full' },
     ]),
   ],

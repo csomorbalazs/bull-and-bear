@@ -67,3 +67,13 @@
 .invalid {
   border: 2px solid #eb5757 !important;
 }
+
+.achievement-icon {
+  pointer-events: initial;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 10px;
+  width: 50px;
+  filter: drop-shadow(0px 4px 0px rgba(0, 0, 0, 0.1));
+}

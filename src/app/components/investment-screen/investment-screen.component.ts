@@ -7,6 +7,8 @@ import { InvestmentOption } from 'src/app/models/InvestementOption';
 import { InvestmentScreenState } from 'src/app/models/InvestementScreenState';
 import { Character } from 'src/app/models/Character';
 import { AudioId } from 'src/app/models/AudioId';
+import { AchievementsService } from 'src/app/services/achievements.service';
+import { Achievement } from 'src/app/models/Achievement';
 
 @Component({
   selector: 'investment-screen',
@@ -24,37 +26,40 @@ export class InvestmentScreenComponent implements OnInit {
   investmentAmount: number;
   lastInvestmentReward: number;
 
-  investementFormScale = 10;
+  investmentFormScale = 10;
 
-  investemnetScreenState: InvestmentScreenState;
+  investmentScreenState: InvestmentScreenState;
   onboardingText = [
     'Gratulálok 🤩, ügyesen megoldottad első feladatodat! A következő oldalon az összegyűjtött pénzedet tudod befektetni. Egyszerre mindig egy befektetésed lehet, ha az lejárt, akkor indíthatod a következőt.',
     'Különböző hosszúságú befektetések vannak. Minél több ideig fektetsz be, annál többet fog kamatozni! 💸',
     'Azonban vigyázz 😱, ha elfogy minden életed, és nincs pénzed, nem tudsz új életet venni! Azt tanácsolom, mindig legyen nálad egy kis pénz, ne fektesd be egyszerre az összeset.',
   ];
 
+  newlyEarnedAchievement: Achievement;
+
   constructor(
     private investmentService: InvestmentsService,
     private playerInfoService: PlayerInfoService,
+    private achievementsService: AchievementsService,
     private soundService: SoundService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (this.playerInfoService.isFirstInvestment()) {
       this.playerInfoService.setFirstInvestment();
-      this.investemnetScreenState = InvestmentScreenState.ONBOARDING;
+      this.investmentScreenState = InvestmentScreenState.ONBOARDING;
     } else if (this.investmentService.isFinishedInvestment()) {
-      this.investemnetScreenState = InvestmentScreenState.FINISHEDINVESTMENT;
+      this.investmentScreenState = InvestmentScreenState.FINISHEDINVESTMENT;
       this.soundService.playAudio(AudioId.INVESTMENT_REWARD);
 
       setTimeout(() => {
-        this.investemnetScreenState = InvestmentScreenState.NEWINVESTMENT;
-      }, 5000);
+        this.checkAchievements();
+      }, 3000);
 
       var lastFinishedInvestment = this.investmentService.getFinishedInvestment();
       this.lastInvestmentReward = lastFinishedInvestment.amount * lastFinishedInvestment.interest;
     } else {
-      this.investemnetScreenState = InvestmentScreenState.NEWINVESTMENT;
+      this.investmentScreenState = InvestmentScreenState.NEWINVESTMENT;
     }
 
     this.investmentService.addFinishedInvestmentsToPlayerScore();
@@ -65,9 +70,9 @@ export class InvestmentScreenComponent implements OnInit {
     this.investmentAmount = Math.round(this.playerInfoService.getCurrentScore() / 2 / 10) * 10;
 
     if (this.playerInfoService.getCurrentScore() / 1000 >= 1) {
-      this.investementFormScale = 100;
+      this.investmentFormScale = 100;
     } else {
-      this.investementFormScale = 10;
+      this.investmentFormScale = 10;
     }
   }
 
@@ -86,15 +91,27 @@ export class InvestmentScreenComponent implements OnInit {
   }
 
   handleMinus() {
-    if (this.investmentAmount >= this.investementFormScale) this.investmentAmount -= this.investementFormScale;
+    if (this.investmentAmount >= this.investmentFormScale) this.investmentAmount -= this.investmentFormScale;
   }
 
   handlePlus() {
-    if (this.playerInfoService.getCurrentScore() > this.investmentAmount + this.investementFormScale / 2)
-      this.investmentAmount += this.investementFormScale;
+    if (this.playerInfoService.getCurrentScore() > this.investmentAmount + this.investmentFormScale / 2)
+      this.investmentAmount += this.investmentFormScale;
   }
 
   onboardingViewed() {
-    this.investemnetScreenState = InvestmentScreenState.NEWINVESTMENT;
+    this.investmentScreenState = InvestmentScreenState.NEWINVESTMENT;
+  }
+
+  checkAchievements() {
+    const achievements = this.achievementsService.updateNewlyEarnedAchievements();
+
+    if (achievements.length > 0) {
+      this.newlyEarnedAchievement = achievements[0];
+      this.investmentScreenState = InvestmentScreenState.ACHIEVEMENT_EARNED;
+      setTimeout(() => this.investmentScreenState = InvestmentScreenState.NEWINVESTMENT, 3000);
+    } else {
+      this.investmentScreenState = InvestmentScreenState.NEWINVESTMENT;
+    }
   }
 }

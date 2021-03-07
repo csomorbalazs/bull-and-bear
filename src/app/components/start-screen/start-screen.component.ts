@@ -20,7 +20,7 @@ export class StartScreenComponent implements OnInit {
     public playerInfoService: PlayerInfoService,
     private router: Router,
     private soundService: SoundService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.ageAlreadyProvided = this.playerInfoService.getAge() !== null;
@@ -46,5 +46,9 @@ export class StartScreenComponent implements OnInit {
     } else {
       this.ageInvalid = true;
     }
+  }
+
+  navigateToAchievements() {
+    this.router.navigateByUrl('/achievements');
   }
 }

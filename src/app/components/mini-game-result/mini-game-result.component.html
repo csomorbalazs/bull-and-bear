@@ -1,5 +1,5 @@
 <div class="minigame-container container">
-  <div class="mini-game-result">
+  <div *ngIf="!newlyEarnedAchievement" class="mini-game-result">
     <img [src]="result === MiniGameState.WON ? 'assets/images/tick.svg' : 'assets/images/broken-heart.svg'">
     <div class="coins" *ngIf="result === MiniGameState.WON">
       <div>+{{reward}} </div>
@@ -11,4 +11,6 @@
       <img [src]="health > 2 ? '/assets/images/red-heart.svg' : '/assets/images/white-heart.svg' ">
     </div>
   </div>
+
+  <achievement-earned *ngIf="newlyEarnedAchievement" [achievement]="newlyEarnedAchievement"></achievement-earned>
 </div>
