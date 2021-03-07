@@ -1,13 +1,15 @@
 <div class="container">
-    <div *ngIf="!showAgeInputScreen" class="start-screen">
-        <img class="start-screen-figure" src="/assets/images/start-screen.svg">
-        <div class="logo-box">Bull & Bear</div>
-        <button class="red-button" (click)="onStartClicked()">Start</button>
-        <div class="score-box"><img src="/assets/images/score-star.svg">{{playerInfoService.getHighscore()}}</div>
+  <div *ngIf="!showAgeInputScreen" class="start-screen">
+    <img class="start-screen-figure" src="/assets/images/start-screen.svg" />
+    <div class="logo-box">Bull & Bear</div>
+    <button class="red-button shine" (click)="onStartClicked()">Start</button>
+    <div class="score-box"><img src="/assets/images/score-star.svg" />{{ playerInfoService.getHighscore() }}</div>
+  </div>
+  <div *ngIf="showAgeInputScreen" class="start-screen">
+    <h1>Hány éves vagy?</h1>
+    <input [class.invalid]="ageInvalid" type="number" maxlength="2" (change)="ageChanged($event.target.value)" />
+    <div>
+      <button class="red-button" (click)="onStartClicked()">Tovább</button>
     </div>
-    <div *ngIf="showAgeInputScreen" class="start-screen">
-        <h1>Hány éves vagy?</h1>
-        <input [class.invalid]="ageInvalid" type="number" maxlength="2" (change)="ageChanged($event.target.value)">
-        <button class="red-button" (click)="onStartClicked()">Tovább</button>
-    </div>
+  </div>
 </div>
