@@ -20,6 +20,9 @@ import { FormsModule } from '@angular/forms';
 import { RunningInvestmentScreenComponent } from './running-investment-screen/running-investment-screen.component';
 import { RouterModule } from '@angular/router';
 import { WorthItMinigameComponent } from './components/mini-games/worth-it-minigame/worth-it-minigame.component';
+import { RecyclingComponent } from './components/mini-games/recycling/recycling.component';
+import { DraggableDirective } from './directives/draggable.directive';
+import { DroppableDirective } from './directives/droppable.directive';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { WorthItMinigameComponent } from './components/mini-games/worth-it-minig
     FakeOrNotComponent,
     RunningInvestmentScreenComponent,
     WorthItMinigameComponent,
+    RecyclingComponent,
+    DraggableDirective,
+    DroppableDirective,
   ],
   imports: [
     BrowserModule,

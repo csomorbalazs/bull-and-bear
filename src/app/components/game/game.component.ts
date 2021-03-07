@@ -10,6 +10,7 @@ import { MoneyCountingMiniGameComponent } from '../mini-games/money-counting-min
 import { getRandomIndices } from 'src/app/utils/randomizer';
 import { MiniGameMetaData } from 'src/app/models/MiniGameMetaData';
 import { WorthItMinigameComponent } from '../mini-games/worth-it-minigame/worth-it-minigame.component';
+import { RecyclingComponent } from '../mini-games/recycling/recycling.component';
 
 @Component({
   selector: 'game',
@@ -45,6 +46,10 @@ export class GameComponent implements OnInit {
       miniGameType: WorthItMinigameComponent,
       minimumAge: 12,
     },
+    {
+      miniGameType: RecyclingComponent,
+      minimumAge: 0
+    }
   ];
 
   private miniGameIndices = getRandomIndices(this.miniGames.length);
@@ -53,7 +58,7 @@ export class GameComponent implements OnInit {
     private componentFactoryResolver: ComponentFactoryResolver,
     private playerInfoService: PlayerInfoService,
     private investmentsService: InvestmentsService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.miniGames = this.miniGames.filter((game) => game.minimumAge <= this.playerInfoService.getAge());
