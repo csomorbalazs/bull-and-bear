@@ -23,17 +23,19 @@ export class InvestmentScreenComponent implements OnInit {
   lastInvestmentReward: number;
 
   investemnetScreenState: InvestmentScreenState;
-  firstInvestment: string;
+  onboardingText = [
+    'Gratulálok 🤩, ügyesen megoldottad első feladatodat! A következő oldalon az összegyűjtött pénzedet tudod befektetni. Egyszerre mindig egy befektetésed lehet, ha az lejárt, akkor indíthatod a következőt.',
+    'Különböző hosszúságú befektetések vannak. Minél több ideig fektetsz be, annál többet fog kamatozni! 💸',
+    'Azonban vigyázz 😱, ha elfogy minden életed, és nincs pénzed, nem tudsz új életet venni! Azt tanácsolom, mindig legyen nálad egy kis pénz, ne fektessd be egyszerre az összeset.',
+  ];
 
   constructor(private investmentService: InvestmentsService, private playerInfoService: PlayerInfoService) {}
 
   ngOnInit(): void {
-    this.firstInvestment = localStorage.getItem('firstInvestment');
-
     this.investmentAmount = Math.round(this.playerInfoService.getCurrentScore() / 2 / 10) * 10;
 
-    if (this.firstInvestment == null) {
-      localStorage.setItem('firstInvestment', 'false');
+    if (this.playerInfoService.isFirstInvestment()) {
+      this.playerInfoService.setFirstInvestment();
       this.investemnetScreenState = InvestmentScreenState.ONBOARDING;
     } else if (this.investmentService.isFinishedInvestment()) {
       this.investemnetScreenState = InvestmentScreenState.FINISHEDINVESTMENT;
