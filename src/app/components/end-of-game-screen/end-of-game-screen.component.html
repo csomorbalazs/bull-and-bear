@@ -32,7 +32,7 @@
         </div>
         <h1 *ngIf="isHighscore; else noHighscore" class="title">Gratulálok, új rekord!</h1>
         <ng-template #noHighscore>
-          <h1 class="title">Rekord</h1>
+          <h1 class="title">Korábbi rekord</h1>
         </ng-template>
         <div class="content">
           <h1 class="new-record">{{ score }}</h1>
