@@ -62,7 +62,6 @@ export class EndOfGameScreenComponent implements OnInit {
 
   onExitClicked() {
     console.log('exit');
-
     this.router.navigateByUrl('/start');
   }
 

@@ -13,34 +13,37 @@ export class InvestmentScreenComponent implements OnInit {
   @Output() finished = new EventEmitter<void>();
 
   investmentOptions: InvestmentOption[];
-  finishedInvestments: Investment[];
   runningInvestment: Investment;
+  isFinishedInvestment: boolean;
+  investmentAmount: number;
+  lastInvestmentReward: number;
 
-  investmentAmount = Math.round(this.playerInfoService.getCurrentScore() / 2 / 10) * 10;
-
-  constructor(
-    private investmentService: InvestmentsService,
-    private playerInfoService: PlayerInfoService
-  ) { }
+  constructor(private investmentService: InvestmentsService, private playerInfoService: PlayerInfoService) { }
 
   ngOnInit(): void {
+    this.investmentAmount = Math.round(this.playerInfoService.getCurrentScore() / 2 / 10) * 10;
+
+    this.isFinishedInvestment = this.investmentService.isFinishedInvestment();
+
+    if (this.isFinishedInvestment) {
+      setTimeout(() => {
+        this.isFinishedInvestment = false;
+      }, 5000);
+      var lastFinishedInvestment = this.investmentService.getFinishedInvestment();
+      this.lastInvestmentReward = lastFinishedInvestment.amount * lastFinishedInvestment.interest;
+    }
+
     this.investmentService.addFinishedInvestmentsToPlayerScore();
-
     this.investmentOptions = this.investmentService.getInvestmentOptions();
-    this.finishedInvestments = this.investmentService.getFinishedInvestments();
-    if (this.investmentService.isRunningInvestment) this.runningInvestment = this.investmentService.getRunningInvestment();
-
-    console.log(this.runningInvestment);
+    if (this.investmentService.isRunningInvestment)
+      this.runningInvestment = this.investmentService.getRunningInvestment();
   }
 
   addInvestment(investmentOption: InvestmentOption) {
-
     if (this.investmentAmount > 0 && this.playerInfoService.getCurrentScore() >= this.investmentAmount) {
-      this.investmentService.invest(new Investment(
-        this.investmentAmount,
-        investmentOption.duration,
-        investmentOption.interest
-      ));
+      this.investmentService.invest(
+        new Investment(this.investmentAmount, investmentOption.duration, investmentOption.interest)
+      );
       this.investmentOptions = this.investmentService.getInvestmentOptions();
       this.finished.emit();
     }
@@ -53,7 +56,8 @@ export class InvestmentScreenComponent implements OnInit {
   handleMinus() {
     if (this.investmentAmount >= 10) this.investmentAmount -= 10;
   }
+
   handlePlus() {
-    if (this.playerInfoService.getCurrentScore() > this.investmentAmount) this.investmentAmount += 10;
+    if (this.playerInfoService.getCurrentScore() > (this.investmentAmount + 5)) this.investmentAmount += 10;
   }
 }
