@@ -1,6 +1,6 @@
 <div class="minigame-container container">
   <img class="character-talking" [class.bull-talking]="character === Character.BULL"
     [src]="character === Character.BULL ? 'assets/images/bull-talking.svg' : 'assets/images/bear-talking.svg'">
-  <div class="lesson-text">{{text}}</div>
-  <button class="next-button red-button" (click)="lessonViewed.emit()">Tovább</button>
+  <div class="lesson-text">{{Array.isArray(text) ? text[currentTextIndex] : text}}</div>
+  <button class="next-button red-button" (click)="onNextPressed()">Tovább</button>
 </div>
