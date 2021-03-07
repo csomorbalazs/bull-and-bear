@@ -50,7 +50,7 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
   }
 
   onMiniGameWon() {
-    this.playerInfoService.increaseScoreBy(50);
+    this.playerInfoService.increaseScoreBy(this.reward);
     this.miniGameState = MiniGameState.WON;
   }
 }

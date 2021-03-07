@@ -27,10 +27,10 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
   @Input() reward: number;
   @Output() finished = new EventEmitter<void>();
 
-  constructor(private playerInfoService: PlayerInfoService) { }
+  constructor(private playerInfoService: PlayerInfoService) {}
 
   onMiniGameWon(): void {
-    this.playerInfoService.increaseScoreBy(50);
+    this.playerInfoService.increaseScoreBy(this.reward);
     this.miniGameState = MiniGameState.WON;
   }
   onMiniGameLost(): void {
@@ -38,7 +38,7 @@ export class FakeOrNotComponent implements OnInit, MiniGame {
     this.miniGameState = MiniGameState.LOST;
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   evaluateResult(clicked: boolean) {
     if (clicked === this.selected.isValid) {
