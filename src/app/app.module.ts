@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { RunningInvestmentScreenComponent } from './running-investment-screen/running-investment-screen.component';
 import { RouterModule } from '@angular/router';
 import { WorthItMinigameComponent } from './components/mini-games/worth-it-minigame/worth-it-minigame.component';
+import { MiningMinigameComponent } from './components/mini-games/mining-mini-game/mining-mini-game.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { WorthItMinigameComponent } from './components/mini-games/worth-it-minig
     FakeOrNotComponent,
     RunningInvestmentScreenComponent,
     WorthItMinigameComponent,
+    MiningMinigameComponent,
   ],
   imports: [
     BrowserModule,

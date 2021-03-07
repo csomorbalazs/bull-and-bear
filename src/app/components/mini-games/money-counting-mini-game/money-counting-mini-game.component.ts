@@ -1,10 +1,8 @@
-import { SoundService } from './../../../services/sound.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Character } from 'src/app/models/Character';
 import { MiniGameState } from 'src/app/models/MiniGameState';
 import { PlayerInfoService } from 'src/app/services/player-info.service';
 import { MiniGame } from '../mini-game';
-import { AudioId } from 'src/app/models/AudioId';
 
 @Component({
   selector: 'money-counting-mini-game',
@@ -25,7 +23,7 @@ export class MoneyCountingMiniGameComponent implements OnInit, MiniGame {
   lessonText =
     'A gyors fejszámolás sokszor nem csak az iskolapadban, hanem az életben is jól jöhet. Mindig számold meg a visszajáró pénzt! 🧾';
 
-  constructor(private playerInfoService: PlayerInfoService, private soundService: SoundService) {}
+  constructor(private playerInfoService: PlayerInfoService) {}
 
   ngOnInit(): void {
     this.targetMoney = this.getRandomNumberEndingWithFiveOrZero();

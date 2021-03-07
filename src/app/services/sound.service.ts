@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core';
 export class SoundService {
   sounds: Map<AudioId, string> = new Map([
     [AudioId.LOST, '/assets/audio/minigame-lost.wav'],
-    [AudioId.COIN_TOUCH, '/assets/audio/coin-touch-short.wav'],
     [AudioId.MINIGAME_WON, '/assets/audio/minigame-won.wav'],
     [AudioId.LONG, '/assets/audio/long.mp3'],
     [AudioId.INVESTMENT_REWARD, '/assets/audio/investment-reward.wav'],
@@ -19,14 +18,14 @@ export class SoundService {
   constructor() {}
 
   playInfinite(sound: AudioId) {
-    // let mainTheme = new Audio();
-    // if (!this.mainStarted) {
-    //   mainTheme.src = this.sounds.get(sound);
-    //   mainTheme.loop = true;
-    //   mainTheme.load();
-    //   mainTheme.play();
-    //   this.mainStarted = true;
-    // }
+    let mainTheme = new Audio();
+    if (!this.mainStarted) {
+      mainTheme.src = this.sounds.get(sound);
+      mainTheme.loop = true;
+      mainTheme.load();
+      mainTheme.play();
+      this.mainStarted = true;
+    }
   }
 
   playAudio(sound: AudioId) {
