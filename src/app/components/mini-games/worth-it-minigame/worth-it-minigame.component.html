@@ -4,7 +4,7 @@
   <div class="grid">
     <button class="choice-1" (click)="onFirstApplesChosen()">
       <div class="btn-content">
-        <img src="{{ firstApplesChoice.url }}" />
+        <img class="apples" src="{{ firstApplesChoice.url }}" />
         <div class="price-tag-left">
           <div class="price">{{ firstApplesChoice.price }} Ft</div>
           <img src="/assets/worth-it/price_tag_left.svg" />
@@ -13,7 +13,7 @@
     </button>
     <button class="choice-2" (click)="onSecondApplesChosen()">
       <div class="btn-content">
-        <img src="{{ secondApplesChoice.url }}" />
+        <img class="apples" src="{{ secondApplesChoice.url }}" />
         <div class="price-tag-right">
           <div class="price">{{ secondApplesChoice.price }} Ft</div>
           <img src="/assets/worth-it/price_tag_right.svg" />

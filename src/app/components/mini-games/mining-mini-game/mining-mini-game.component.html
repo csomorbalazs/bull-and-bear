@@ -3,7 +3,7 @@
   <h1>Bányássz!</h1>
   <div (click)="onClick()">
     <div>
-      <img [ngClass]="{ rotate: currentClicks % 2 === 1 }" class="pickaxe" src="assets/mining/pickaxe.png" />
+      <img [ngClass]="{ rotate: currentClicks % 2 === 1 }" class="pickaxe" src="assets/mining/pickaxe.svg" />
       <ng-container *ngFor="let i of [].constructor(20)">
         <div [ngClass]="{ particle: currentClicks % 2 === 1 }"></div>
       </ng-container>

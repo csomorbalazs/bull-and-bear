@@ -30,18 +30,18 @@ export class GameComponent implements OnInit {
   private currentMiniGameIndex: number;
 
   private miniGames: MiniGameMetaData[] = [
-    {
-      miniGameType: MoneyCountingMiniGameComponent,
-      minimumAge: 0,
-    },
-    {
-      miniGameType: CasinoMiniGameComponent,
-      minimumAge: 0,
-    },
-    {
-      miniGameType: FakeOrNotComponent,
-      minimumAge: 12,
-    },
+    // {
+    //   miniGameType: MoneyCountingMiniGameComponent,
+    //   minimumAge: 0,
+    // },
+    // {
+    //   miniGameType: CasinoMiniGameComponent,
+    //   minimumAge: 0,
+    // },
+    // {
+    //   miniGameType: FakeOrNotComponent,
+    //   minimumAge: 12,
+    // },
     {
       miniGameType: WorthItMinigameComponent,
       minimumAge: 12,
