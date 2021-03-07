@@ -1,16 +1,16 @@
 <div class="container minigame-container" *ngIf="miniGameState === MiniGameState.GAMEPLAY">
   <timer [initialTimeInSeconds]="timeLimitInSeconds" (timeIsUp)="onMiniGameLost()"></timer>
   <div>
-    <h1>Hamis vagy valódi?</h1>
+    <h1>Átverés vagy megbízható?</h1>
   </div>
   <img class="main-image" src="{{ selected.imgUrl }}" alt="Hamis vagy valódi?" />
 
   <div class="buttons">
     <div (click)="evaluateResult(false)" class="button-tinder">
-      <span class="negative-color"> Fake </span>
+      <span class="negative-color"> Átverés </span>
     </div>
     <div (click)="evaluateResult(true)" class="button-tinder">
-      <span class="positive-color"> Valódi </span>
+      <span class="positive-color"> Megbízható </span>
     </div>
   </div>
 </div>
