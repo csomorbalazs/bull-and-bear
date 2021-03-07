@@ -1,4 +1,16 @@
-<div class="container minigame-container">
+<div *ngIf="isFinishedInvestment" class="container minigame-container reward-container">
+  <h1>Befektetett pénzed kamatozott! </h1><br>
+  <div class="investment-reward">
+    <img src="assets/images/tick.svg">
+    <div class="coins">
+      <div>+{{lastInvestmentReward}} </div>
+      <img src="assets/images/score-coin.svg">
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="!isFinishedInvestment" class="container minigame-container">
   <h1>Új befektetés </h1>
   <div class="set-invest-amount">
     <button class="minus" (click)="handleMinus()">-</button>
