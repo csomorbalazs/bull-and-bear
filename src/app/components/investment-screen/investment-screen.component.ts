@@ -18,7 +18,7 @@ export class InvestmentScreenComponent implements OnInit {
   investmentAmount: number;
   lastInvestmentReward: number;
 
-  constructor(private investmentService: InvestmentsService, private playerInfoService: PlayerInfoService) {}
+  constructor(private investmentService: InvestmentsService, private playerInfoService: PlayerInfoService) { }
 
   ngOnInit(): void {
     this.investmentAmount = Math.round(this.playerInfoService.getCurrentScore() / 2 / 10) * 10;
@@ -56,7 +56,8 @@ export class InvestmentScreenComponent implements OnInit {
   handleMinus() {
     if (this.investmentAmount >= 10) this.investmentAmount -= 10;
   }
+
   handlePlus() {
-    if (this.playerInfoService.getCurrentScore() > this.investmentAmount) this.investmentAmount += 10;
+    if (this.playerInfoService.getCurrentScore() > (this.investmentAmount + 5)) this.investmentAmount += 10;
   }
 }
