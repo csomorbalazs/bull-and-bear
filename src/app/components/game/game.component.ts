@@ -31,25 +31,25 @@ export class GameComponent implements OnInit {
   private currentMiniGameIndex: number;
 
   private miniGames: MiniGameMetaData[] = [
-    // {
-    //   miniGameType: MoneyCountingMiniGameComponent,
-    //   minimumAge: 0,
-    // },
-    // {
-    //   miniGameType: CasinoMiniGameComponent,
-    //   minimumAge: 0,
-    // },
-    // {
-    //   miniGameType: FakeOrNotComponent,
-    //   minimumAge: 12,
-    // },
+    {
+      miniGameType: MoneyCountingMiniGameComponent,
+      minimumAge: 0,
+    },
+    {
+      miniGameType: CasinoMiniGameComponent,
+      minimumAge: 0,
+    },
+    {
+      miniGameType: FakeOrNotComponent,
+      minimumAge: 12,
+    },
     {
       miniGameType: WorthItMinigameComponent,
       minimumAge: 12,
     },
     {
       miniGameType: RecyclingComponent,
-      minimumAge: 0
+      minimumAge: 0,
     },
     {
       miniGameType: MiningMinigameComponent,
@@ -63,7 +63,7 @@ export class GameComponent implements OnInit {
     private componentFactoryResolver: ComponentFactoryResolver,
     private playerInfoService: PlayerInfoService,
     private investmentsService: InvestmentsService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.miniGames = this.miniGames.filter((game) => game.minimumAge <= this.playerInfoService.getAge());
